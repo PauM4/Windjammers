@@ -25,6 +25,8 @@ bool SceneTitle::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/UI/titleScreen.png");
+	//SILENT AUDIO per aturar la música de IntroScreen
+	App->audio->PlayMusic("Assets/Music/silenceAudio.ogg");
 	selectFx = App->audio->LoadFx("Assets/FX/Select.wav");
 
 	App->render->camera.x = 0;
