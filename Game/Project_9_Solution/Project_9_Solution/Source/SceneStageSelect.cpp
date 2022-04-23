@@ -24,7 +24,7 @@ bool SceneStageSelect::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/beachStageSelect.png");
+	bgTexture = App->textures->Load("Assets/Sprites/UI/beachStageSelect.png");
 	App->audio->PlayMusic("Assets/Music/01_Get Ready (Select Screen).ogg", 1.0f);
 	selectFx = App->audio->LoadFx("Assets/FX/Select.wav");
 
