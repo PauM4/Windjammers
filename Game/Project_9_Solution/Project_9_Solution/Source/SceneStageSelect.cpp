@@ -36,12 +36,6 @@ bool SceneStageSelect::Start()
 
 Update_Status SceneStageSelect::Update()
 {
-	//TESTING 
-	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
-	{
-		App->audio->PlayFx(selectFx);
-	}
-	//---TESTING
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{		
 		App->audio->PlayFx(selectFx);
