@@ -50,6 +50,8 @@ public:
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
 
 	// The player's collider
 	Collider* collider = nullptr;
