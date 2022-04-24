@@ -10,6 +10,7 @@
 #include "SceneTitle.h"
 #include "SceneCharacterSelect.h"
 #include "SceneStageSelect.h"
+#include "SceneCharacterPresent.h"
 #include "SceneBeachStage.h"
 #include "SceneLevel1.h"
 #include "ModuleParticles.h"
@@ -35,15 +36,16 @@ Application::Application()
 	modules[6] =	sceneCharacterSelect = new SceneCharacterSelect(false);
 	modules[7] =	sceneStageSelect =	new SceneStageSelect(false);
 	modules[8] =	sceneBeachStage = new SceneBeachStage(false);
-	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
-	modules[10] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[11] =	particles =		new ModuleParticles(true);
-	modules[12] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[9] =	sceneCharacterPresent = new SceneCharacterPresent(false);
+	modules[10] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[12] =	particles =		new ModuleParticles(true);
+	modules[13] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =	render =		new ModuleRender(true);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =	fonts =			new ModuleFonts(true);
+	modules[17] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
