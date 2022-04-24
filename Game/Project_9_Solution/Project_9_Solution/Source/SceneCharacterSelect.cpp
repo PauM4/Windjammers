@@ -25,7 +25,7 @@ bool SceneCharacterSelect::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/UI/characterSelectBackground.png");
-	App->audio->PlayMusic("Assets/Music/01_Get Ready (Select Screen).ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Music/01_Get Ready (Select Screen).ogg", 0.0f);
 	selectFx = App->audio->LoadFx("Assets/FX/Select.wav");
 
 	App->render->camera.x = 0;

@@ -115,6 +115,9 @@
     <ClInclude Include="SceneCharacterSelect.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="SceneBeachStage.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -196,6 +199,9 @@
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="SceneCharacterSelect.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBeachStage.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

@@ -38,7 +38,7 @@ Update_Status SceneStageSelect::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{		
 		App->audio->PlayFx(selectFx);
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 90);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
