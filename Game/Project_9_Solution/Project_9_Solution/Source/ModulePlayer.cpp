@@ -80,7 +80,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/Jap.png");
+	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
 	currentAnimation = &idleAnim;
 
 
@@ -106,7 +106,7 @@ Update_Status ModulePlayer::Update()
 		
 		if (currentAnimation != &leftAnim)
 		{
-			downAnim.Reset();
+			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
 	}
@@ -116,7 +116,7 @@ Update_Status ModulePlayer::Update()
 		position.x += speed;
 		if (currentAnimation != &rightAnim)
 		{
-			downAnim.Reset();
+			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
 	}
@@ -148,9 +148,7 @@ Update_Status ModulePlayer::Update()
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE)
-		currentAnimation = &idleAnim;
+	
 
 	collider->SetPos(position.x, position.y);
 
