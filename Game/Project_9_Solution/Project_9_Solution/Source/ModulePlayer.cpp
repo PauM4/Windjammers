@@ -27,7 +27,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleAnim.speed = 0.1f;
 
 	// move right
-	rightAnim.PushBack({ 454, 148, 45, 32 }); 
+	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.PushBack({ 426, 148, 28, 33 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
 	rightAnim.PushBack({ 339, 148, 46,	29 });
@@ -37,12 +37,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 84, 148, 31, 34 });
-	downAnim.PushBack({ 125, 148, 30, 38 });
-	downAnim.PushBack({ 155, 148, 24, 41 });
-	downAnim.PushBack({ 179, 148, 29, 35 });
-	downAnim.PushBack({ 208, 148, 32, 38 });
 	downAnim.PushBack({ 240, 148, 29, 43 });
+	downAnim.PushBack({ 208, 148, 32, 38 });
+	downAnim.PushBack({ 179, 148, 29, 35 });
+	downAnim.PushBack({ 155, 148, 24, 41 });
+	downAnim.PushBack({ 125, 148, 30, 38 });
+	downAnim.PushBack({ 94, 148, 31, 34 });
 	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
@@ -90,7 +90,7 @@ bool ModulePlayer::Start()
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 38, 53 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -103,7 +103,7 @@ Update_Status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
-		
+
 		if (currentAnimation != &leftAnim)
 		{
 			leftAnim.Reset();
@@ -147,10 +147,14 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayFx(laserFx);
 	}
 
-	// If no up/down movement detected, set the current animation back to idle
-	
 
 	collider->SetPos(position.x, position.y);
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
+		currentAnimation = &idleAnim;
 
 	currentAnimation->Update();
 
@@ -186,3 +190,4 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		destroyed = true;
 	}
 }
+
