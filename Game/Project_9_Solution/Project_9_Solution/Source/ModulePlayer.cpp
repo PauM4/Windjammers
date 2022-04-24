@@ -149,7 +149,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(explosionFx);
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneTitle, 60);
 
 		destroyed = true;
 	}
