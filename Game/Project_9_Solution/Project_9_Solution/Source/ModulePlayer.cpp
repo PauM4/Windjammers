@@ -84,10 +84,8 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Jap.png");
 	currentAnimation = &idleAnim;
 
-	//laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	//explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	position.x = 150;
+	position.x = 20;
 	position.y = 120;
 
 	// TODO 4: Retrieve the player when playing a second time
