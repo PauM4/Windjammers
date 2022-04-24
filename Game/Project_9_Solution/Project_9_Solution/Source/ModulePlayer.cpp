@@ -90,7 +90,7 @@ bool ModulePlayer::Start()
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 38, 53 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 46, 53 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
