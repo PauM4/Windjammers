@@ -27,12 +27,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleAnim.speed = 0.1f;
 
 	// move right
-	rightAnim.PushBack({ 269, 148, 41, 35 }); //2
-	rightAnim.PushBack({ 310, 148, 29, 36 }); //4
-	rightAnim.PushBack({ 339, 148, 46,	29 }); //3
-	rightAnim.PushBack({ 385, 148, 41, 36 }); //4
-	rightAnim.PushBack({ 426, 148, 28, 33 }); //2
-	rightAnim.PushBack({ 454, 148, 45, 32 }); // 5
+	rightAnim.PushBack({ 454, 148, 45, 32 }); 
+	rightAnim.PushBack({ 426, 148, 28, 33 });
+	rightAnim.PushBack({ 385, 148, 41, 36 });
+	rightAnim.PushBack({ 339, 148, 46,	29 });
+	rightAnim.PushBack({ 310, 148, 29, 36 });
+	rightAnim.PushBack({ 269, 148, 41, 35 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 
@@ -47,26 +47,25 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	downAnim.speed = 0.1f;
 
 	//Move Up
-	upAnim.PushBack({ 0, 191, 30, 50 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 120, 191, 30, 51 });
 	upAnim.PushBack({ 150, 191, 30, 40 });
+	upAnim.PushBack({ 120, 191, 30, 51 });
+	upAnim.PushBack({ 90, 191, 30, 50 });
+	upAnim.PushBack({ 60, 191, 30, 40 });
+	upAnim.PushBack({ 30, 191, 30, 53 });
+	upAnim.PushBack({ 0, 191, 30, 50 });
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
 	//Move Left
-	downAnim.PushBack({ 393, 103, 23, 36 });
-	downAnim.PushBack({ 370, 103, 23, 35 });
-	downAnim.PushBack({ 347, 103, 23, 36 });
-	downAnim.PushBack({ 323, 103, 24, 36 });
-	downAnim.PushBack({ 299, 103, 24, 35 });
-	downAnim.PushBack({ 275, 103, 24, 36 });
-	downAnim.PushBack({ 251, 103, 23, 39 });
-	downAnim.PushBack({ 227, 103, 23, 37 });
-	rightAnim.loop = true;
-	rightAnim.speed = 0.1f;
+	leftAnim.PushBack({ 310, 404, 29, 36 });
+	leftAnim.PushBack({ 268, 403, 42, 36 });
+	leftAnim.PushBack({ 456, 404, 45, 31 });
+	leftAnim.PushBack({ 268, 403, 42, 36 });
+	leftAnim.PushBack({ 426, 404, 28, 33 });
+	leftAnim.PushBack({ 385, 404, 41, 36 });
+	leftAnim.PushBack({ 339, 404, 46, 29 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.1f;
 
 }
 
@@ -81,7 +80,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
+	texture = App->textures->Load("Assets/Sprites/Jap.png");
 	currentAnimation = &idleAnim;
 
 
@@ -91,7 +90,7 @@ bool ModulePlayer::Start()
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 53 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -104,11 +103,22 @@ Update_Status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
+		
+		if (currentAnimation != &leftAnim)
+		{
+			downAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &rightAnim)
+		{
+			downAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
