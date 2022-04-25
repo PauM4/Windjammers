@@ -11,7 +11,15 @@
 
 SceneCharacterPresent::SceneCharacterPresent(bool startEnabled) : Module(startEnabled)
 {
-
+	bgEffectAnim.PushBack({ 0, 0, 304, 224 });
+	//bgEffectAnim.PushBack({ 0, 448, 304, 224 });
+	bgEffectAnim.PushBack({ 0, 224, 304, 224 });
+	//bgEffectAnim.PushBack({ 0, 448, 304, 224 });
+	bgEffectAnim.PushBack({ 0, 672, 304, 224 });
+	//bgEffectAnim.PushBack({ 0, 448, 304, 224 });
+	bgEffectAnim.loop = true;
+	bgEffectAnim.speed = 0.8f;
+	currentAnimation = &bgEffectAnim;
 }
 
 SceneCharacterPresent::~SceneCharacterPresent()
@@ -26,8 +34,9 @@ bool SceneCharacterPresent::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/UI/bgEffect.png");
-	charactersPresent = App->textures->Load("Assets/Sprites/UI/charactersPresent.png");
+	bgTexture = App->textures->Load("Assets/Sprites/UI/bgEffect_SpriteSheet.png");
+
+	charactersPresentTexture = App->textures->Load("Assets/Sprites/UI/charactersPresent.png");
 	App->audio->PlayMusic("Assets/Music/02_Go for Broke! (Round Start).ogg", 0.1f);
 	//App->audio->PlayMusic("Assets/Music/silenceAudio.ogg");
 
@@ -45,6 +54,8 @@ Update_Status SceneCharacterPresent::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 30);
 	}
 
+	currentAnimation->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -53,22 +64,9 @@ int hola = 0;
 Update_Status SceneCharacterPresent::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(charactersPresent, 0, 0, NULL);
-	//COSA RARA
-	//switch (hola)
-	//{
-	//case 0:
-	//	App->render->Blit(bgTexture, 0, 0, NULL);
-	//	hola = 1;
-	//	break;
-	//case 1:
-	//	App->render->Blit(charactersPresent, 0, 0, NULL);
-	//	hola = 0;
-	//	break;
-	//default:
-	//	break;
-	//}
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	App->render->Blit(bgTexture, 0, 0, &rect);
+	//App->render->Blit(charactersPresentTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

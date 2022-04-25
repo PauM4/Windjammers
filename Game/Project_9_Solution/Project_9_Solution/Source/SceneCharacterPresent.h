@@ -31,10 +31,16 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* charactersPresent = nullptr;
+	SDL_Texture* charactersPresentTexture = nullptr;
+
+	Animation* currentAnimation = nullptr;
 
 	// Sound effects indices
-	uint hiromiSelected = 0;
+	//uint hiromiSelected = 0;
+
+	// Background animation
+	Animation bgEffectAnim;
+	
 
 };
 
