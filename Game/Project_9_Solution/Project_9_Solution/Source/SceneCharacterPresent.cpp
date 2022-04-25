@@ -64,9 +64,9 @@ int hola = 0;
 Update_Status SceneCharacterPresent::PostUpdate()
 {
 	// Draw everything --------------------------------------
+	//App->render->Blit(charactersPresentTexture, 0, 0, NULL);
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(bgTexture, 0, 0, &rect);
-	//App->render->Blit(charactersPresentTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
