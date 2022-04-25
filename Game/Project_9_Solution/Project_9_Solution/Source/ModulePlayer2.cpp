@@ -83,13 +83,13 @@ bool ModulePlayer2::Start()
 	currentAnimation = &idleAnim;
 
 
-	position.x = 20;
-	position.y = 120;
+	position.x = 264;
+	position.y = 100;
 
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 46, 53 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -99,7 +99,7 @@ Update_Status ModulePlayer2::Update()
 	// Moving the player with the camera scroll
 	//App->player->position.x += 1;
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 155)
 	{
 		position.x -= speed;
 
@@ -110,7 +110,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && position.x < 254)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_UP] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] != Key_State::KEY_REPEAT)
@@ -120,7 +120,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && position.y < 150)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -130,7 +130,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && position.y > 50)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
