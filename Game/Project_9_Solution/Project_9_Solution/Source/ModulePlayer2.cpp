@@ -140,9 +140,9 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->frisbee, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
 	}
 
