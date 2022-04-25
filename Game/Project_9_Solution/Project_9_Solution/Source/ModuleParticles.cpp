@@ -1,4 +1,5 @@
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "Application.h"
 
@@ -233,6 +234,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 Update_Status ModuleParticles::Update()
 {
+	if (frisbee.position.x < 20 && frisbee.position.y < 100)
+	{
+		App->player->score += 3;
+		LOG("SCOREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+	}
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* particle = particles[i];
@@ -245,7 +251,7 @@ Update_Status ModuleParticles::Update()
 			particles[i]->SetToDelete();
 		}
 	}
-
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 
