@@ -20,6 +20,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
+#include "ModuleFrisbee.h"
 
 Application::Application()
 {
@@ -41,13 +42,14 @@ Application::Application()
 	modules[10] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
 	modules[11] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[12] =   player2 =       new ModulePlayer2(false);	//Player starts disabled
-	modules[13] =	particles =		new ModuleParticles(true);
-	modules[14] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[13] = frisbee = new ModuleFrisbee(true);
+	modules[14] =	particles =		new ModuleParticles(true);
+	modules[15] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 // AAAAAAAAAAAAAAH
-	modules[15] =	collisions =	new ModuleCollisions(true);
-	modules[16] =	fade =			new ModuleFadeToBlack(true);
-	modules[17] =	fonts =			new ModuleFonts(true);
-	modules[18] =	render =		new ModuleRender(true);
+	modules[16] =	collisions =	new ModuleCollisions(true);
+	modules[17] =	fade =			new ModuleFadeToBlack(true);
+	modules[18] =	fonts =			new ModuleFonts(true);
+	modules[19] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

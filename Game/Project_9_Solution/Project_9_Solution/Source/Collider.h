@@ -15,6 +15,7 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
+		FRISBEE,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
 

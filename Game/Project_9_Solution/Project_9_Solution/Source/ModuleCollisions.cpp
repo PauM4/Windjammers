@@ -40,6 +40,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
+
+	matrix[Collider::Type::FRISBEE][Collider::Type::WALL] = true;
+	matrix[Collider::Type::FRISBEE][Collider::Type::PLAYER] = true;
+
 }
 
 // Destructor
@@ -138,6 +142,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::ENEMY_SHOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+			case Collider::Type::FRISBEE: //Grey
+			App->render->DrawQuad(colliders[i]->rect, 110, 110, 110, alpha);
 			break;
 		}
 	}

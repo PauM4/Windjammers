@@ -124,6 +124,7 @@
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFrisbee.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -215,6 +216,9 @@
     </ClCompile>
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFrisbee.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
