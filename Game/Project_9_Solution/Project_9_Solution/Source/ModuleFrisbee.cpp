@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 {
@@ -112,6 +113,6 @@ void ModuleFrisbee::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		destroyed = true;
 	}
 }
+
