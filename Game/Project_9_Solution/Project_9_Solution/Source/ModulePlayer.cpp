@@ -143,15 +143,15 @@ Update_Status ModulePlayer::Update()
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			App->particles->AddParticle(App->particles->frisbeeUp, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(5, -5, App->particles->frisbee, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 		}
-	
+
 
 		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
-			App->particles->AddParticle(App->particles->frisbeeDown, position.x + 20, position.y+20, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(5, 5, App->particles->frisbee, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 
@@ -159,24 +159,24 @@ Update_Status ModulePlayer::Update()
 
 		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN)
 		{
-			App->particles->AddParticle(App->particles->frisbee, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(5, 0, App->particles->frisbee, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 		}
 	}
-	
+
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
-			App->particles->AddParticle(App->particles->frisbeeProjectileUp, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(2.5, -1, App->particles->frisbeeProjectile, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 		}
-	
+
 
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 		{
-			App->particles->AddParticle(App->particles->frisbeeProjectileDown, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(2.5, 1, App->particles->frisbeeProjectile, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 
@@ -184,12 +184,12 @@ Update_Status ModulePlayer::Update()
 
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN)
 		{
-			App->particles->AddParticle(App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+			App->particles->AddParticle(2.5, 0, App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 			App->audio->PlayFx(laserFx);
 			break;
 		}
 	}
-	
+
 
 
 	collider->SetPos(position.x, position.y);
@@ -201,7 +201,7 @@ Update_Status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
 
-	
+
 
 	currentAnimation->Update();
 
@@ -223,7 +223,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		
+
 	}
 }
-

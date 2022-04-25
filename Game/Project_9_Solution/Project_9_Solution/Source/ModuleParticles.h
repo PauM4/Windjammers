@@ -51,7 +51,7 @@ public:
 	// Param particle	- A template particle from which the new particle will be created
 	// Param x, y		- Position x,y in the screen (upper left axis)
 	// Param delay		- Delay time from the moment the function is called until the particle is displayed in screen
-	Particle* AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
+	Particle* AddParticle(int xspeed, int yspeed, const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
 
 public:
 	//Template particle for an explosion
@@ -61,18 +61,18 @@ public:
 	Particle laser;
 
 	Particle frisbee;
-	Particle frisbeeUp;
-	Particle frisbeeDown;
+	/*Particle frisbeeUp;
+	Particle frisbeeDown;*/
 	Particle frisbeeProjectile;
-	Particle frisbeeProjectileUp;
-	Particle frisbeeProjectileDown;
+	//Particle frisbeeProjectileUp;
+	//Particle frisbeeProjectileDown;
 
-	Particle frisbee2;
-	Particle frisbee2Up;
-	Particle frisbee2Down;
-	Particle frisbeeProjectile2;
-	Particle frisbeeProjectile2Up;
-	Particle frisbeeProjectile2Down;
+	//Particle frisbee2;
+	//Particle frisbee2Up;
+	//Particle frisbee2Down;
+	//Particle frisbeeProjectile2;
+	//Particle frisbeeProjectile2Up;
+	//Particle frisbeeProjectile2Down;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
