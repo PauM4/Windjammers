@@ -99,7 +99,8 @@ Update_Status ModulePlayer::Update()
 	// Moving the player with the camera scroll
 	//App->player->position.x += 1;
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && disco)
+	//MOVIMIENTO
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20)
 	{
 		position.x -= speed;
 
@@ -110,7 +111,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && disco)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
@@ -120,7 +121,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && disco)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -130,7 +131,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && disco)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -139,7 +140,8 @@ Update_Status ModulePlayer::Update()
 			currentAnimation = &upAnim;
 		}
 	}
-
+	
+	//LANZAMIENTO DE DISCO NORMAL
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
 		{
@@ -161,10 +163,12 @@ Update_Status ModulePlayer::Update()
 		{
 			App->particles->AddParticle(5, 0, App->particles->frisbee, position.x + 20, position.y, Collider::Type::PLAYER_SHOT );
 			App->audio->PlayFx(laserFx);
+
 			break;
 		}
 	}
 
+	//LANZAMIENTO DE DISCO PARÁBOLA
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
 		{
@@ -223,6 +227,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-
+		//creo q si ya lo tenemos puesto en el disco que si choca no haga nada, no deberia hacer falta ponerlo aqui tmb
 	}
+}
+
+void ModulePlayer::frisbeeCollision() {
+	disco = true;
 }

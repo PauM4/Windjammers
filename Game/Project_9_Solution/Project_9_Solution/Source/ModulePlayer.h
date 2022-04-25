@@ -60,6 +60,7 @@ public:
 	bool destroyed = false;
 
 	bool disco = false;
+	void frisbeeCollision();
 
 	// Sound effects indices
 	uint laserFx = 0;

@@ -47,8 +47,8 @@ bool ModuleFrisbee::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/wind.png");
-
+	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
+	
 
 	position.x = App->player->position.x; // --------------- Asigno al disco la posicion inicial de donde se encuentre el personaje
 	position.y = App->player->position.y;
@@ -95,7 +95,8 @@ Update_Status ModuleFrisbee::Update()
 		}
 	}
 	currentAnimation2->Update();
-	//collider->SetPos(position.x, position.y);
+	
+	collider->SetPos(position.x, position.y);
 
 
 
@@ -113,6 +114,8 @@ void ModuleFrisbee::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
+		App->player->frisbeeCollision();
+
 	}
 }
 

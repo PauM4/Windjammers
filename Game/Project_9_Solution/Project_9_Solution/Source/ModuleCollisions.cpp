@@ -42,7 +42,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
 
 	matrix[Collider::Type::FRISBEE][Collider::Type::WALL] = true;
-	matrix[Collider::Type::FRISBEE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::FRISBEE][Collider::Type::PLAYER] = false;
 
 }
 
