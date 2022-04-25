@@ -92,6 +92,36 @@ bool ModuleParticles::Start()
 	frisbee2Down.lifetime = 180;
 	frisbee2Down.anim.speed = 0.2f;
 
+		// Projectile motion animation
+	frisbeeProjectile.anim.PushBack({ 35, 8, 17, 29 });
+	frisbeeProjectile.anim.PushBack({ 53, 7, 25, 31 });
+	frisbeeProjectile.anim.PushBack({ 79, 6, 36, 34 });
+	frisbeeProjectile.anim.PushBack({ 116, 5, 28, 36 });
+	frisbeeProjectile.anim.PushBack({ 145, 4, 21, 38 });
+	frisbeeProjectile.anim.PushBack({ 167, 3, 3, 39 });
+	frisbeeProjectile.anim.PushBack({ 171, 2, 23, 41 });
+	frisbeeProjectile.anim.PushBack({ 195, 2, 33, 42 });
+	frisbeeProjectile.anim.PushBack({ 229, 0, 43, 44 });
+	frisbeeProjectile.speed.x = 2,5;
+	frisbeeProjectile.anim.loop = false;
+	frisbeeProjectile.lifetime = 180;
+	frisbeeProjectile.anim.speed = 0.1f;
+
+	frisbeeProjectile2.anim.PushBack({ 35, 8, 17, 29 });
+	frisbeeProjectile2.anim.PushBack({ 53, 7, 25, 31 });
+	frisbeeProjectile2.anim.PushBack({ 79, 6, 36, 34 });
+	frisbeeProjectile2.anim.PushBack({ 116, 5, 28, 36 });
+	frisbeeProjectile2.anim.PushBack({ 145, 4, 21, 38 });
+	frisbeeProjectile2.anim.PushBack({ 167, 3, 3, 39 });
+	frisbeeProjectile2.anim.PushBack({ 171, 2, 23, 41 });
+	frisbeeProjectile2.anim.PushBack({ 195, 2, 33, 42 });
+	frisbeeProjectile2.anim.PushBack({ 229, 0, 43, 44 });
+	frisbeeProjectile2.speed.x = -2.5; 
+	frisbeeProjectile2.anim.loop = false;
+	frisbeeProjectile2.lifetime = 180;
+	frisbeeProjectile2.anim.speed = 0.1f;
+
+
 
 	return true;
 }

@@ -139,6 +139,7 @@ Update_Status ModulePlayer::Update()
 			currentAnimation = &upAnim;
 		}
 	}
+
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 		{
@@ -164,6 +165,26 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 	
+	for (int i = 0; i < 1; i++) {
+		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+		{
+		
+		}
+	
+
+		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+		{
+		
+
+		}
+
+		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN)
+		{
+			App->particles->AddParticle(App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(laserFx);
+			break;
+		}
+	}
 	
 
 
