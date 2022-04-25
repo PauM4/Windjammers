@@ -22,7 +22,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
 
 	// Explosion particle
 	explosion.anim.PushBack({274, 296, 33, 30});
@@ -39,6 +39,22 @@ bool ModuleParticles::Start()
 	laser.speed.x = 5;
 	laser.lifetime = 180;
 	laser.anim.speed = 0.2f;
+
+	frisbee.anim.PushBack({ 117, 48, 16, 16 });
+	frisbee.anim.PushBack({ 149, 48, 16, 16 });
+	frisbee.anim.PushBack({ 181, 48, 16, 16 });
+	frisbee.anim.PushBack({ 213, 48, 16, 16 });
+	frisbee.speed.x = 5;
+	frisbee.lifetime = 180;
+	frisbee.anim.speed = 0.2f;
+
+	frisbee2.anim.PushBack({ 117, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 149, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 181, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 213, 48, 16, 16 });
+	frisbee2.speed.x = -5;
+	frisbee.lifetime = 180;
+	frisbee.anim.speed = 0.2f;
 
 	return true;
 }
