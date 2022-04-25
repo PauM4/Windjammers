@@ -43,7 +43,7 @@ Application::Application()
 	modules[12] =   player2 =       new ModulePlayer2(false);	//Player starts disabled
 	modules[13] =	particles =		new ModuleParticles(true);
 	modules[14] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-
+// AAAAAAAAAAAAAAH
 	modules[15] =	collisions =	new ModuleCollisions(true);
 	modules[16] =	fade =			new ModuleFadeToBlack(true);
 	modules[17] =	fonts =			new ModuleFonts(true);
