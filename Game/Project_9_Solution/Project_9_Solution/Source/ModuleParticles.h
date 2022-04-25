@@ -60,6 +60,7 @@ public:
 	Particle laser;
 
 	Particle frisbee;
+	Particle frisbee2;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

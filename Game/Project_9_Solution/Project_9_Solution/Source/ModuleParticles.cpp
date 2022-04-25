@@ -48,6 +48,14 @@ bool ModuleParticles::Start()
 	frisbee.lifetime = 180;
 	frisbee.anim.speed = 0.2f;
 
+	frisbee2.anim.PushBack({ 117, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 149, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 181, 48, 16, 16 });
+	frisbee2.anim.PushBack({ 213, 48, 16, 16 });
+	frisbee2.speed.x = -5;
+	frisbee.lifetime = 180;
+	frisbee.anim.speed = 0.2f;
+
 	return true;
 }
 
