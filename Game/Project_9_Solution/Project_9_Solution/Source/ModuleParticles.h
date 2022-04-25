@@ -43,6 +43,7 @@ public:
 	// Destroys all active particles left in the array
 	bool CleanUp() override;
 
+
 	// Called when a particle collider hits another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
@@ -60,7 +61,12 @@ public:
 	Particle laser;
 
 	Particle frisbee;
+	Particle frisbeeUp;
+	Particle frisbeeDown;
+
 	Particle frisbee2;
+	Particle frisbee2Up;
+	Particle frisbee2Down;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

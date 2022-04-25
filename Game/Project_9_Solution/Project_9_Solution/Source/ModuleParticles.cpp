@@ -48,6 +48,24 @@ bool ModuleParticles::Start()
 	frisbee.lifetime = 180;
 	frisbee.anim.speed = 0.2f;
 
+	frisbeeUp.anim.PushBack({ 117, 48, 16, 16 });
+	frisbeeUp.anim.PushBack({ 149, 48, 16, 16 });
+	frisbeeUp.anim.PushBack({ 181, 48, 16, 16 });
+	frisbeeUp.anim.PushBack({ 213, 48, 16, 16 });
+	frisbeeUp.speed.x = 5;
+	frisbeeUp.speed.y = -5;
+	frisbeeUp.lifetime = 180;
+	frisbeeUp.anim.speed = 0.2f;
+
+	frisbeeDown.anim.PushBack({ 117, 48, 16, 16 });
+	frisbeeDown.anim.PushBack({ 149, 48, 16, 16 });
+	frisbeeDown.anim.PushBack({ 181, 48, 16, 16 });
+	frisbeeDown.anim.PushBack({ 213, 48, 16, 16 });
+	frisbeeDown.speed.x = 5;
+	frisbeeDown.speed.y = 5;
+	frisbeeDown.lifetime = 180;
+	frisbeeDown.anim.speed = 0.2f;
+
 	frisbee2.anim.PushBack({ 117, 48, 16, 16 });
 	frisbee2.anim.PushBack({ 149, 48, 16, 16 });
 	frisbee2.anim.PushBack({ 181, 48, 16, 16 });
@@ -55,6 +73,25 @@ bool ModuleParticles::Start()
 	frisbee2.speed.x = -5;
 	frisbee.lifetime = 180;
 	frisbee.anim.speed = 0.2f;
+
+	frisbee2Up.anim.PushBack({ 117, 48, 16, 16 });
+	frisbee2Up.anim.PushBack({ 149, 48, 16, 16 });
+	frisbee2Up.anim.PushBack({ 181, 48, 16, 16 });
+	frisbee2Up.anim.PushBack({ 213, 48, 16, 16 });
+	frisbee2Up.speed.x = -5;
+	frisbee2Up.speed.y = -5;
+	frisbee2Up.lifetime = 180;
+	frisbee2Up.anim.speed = 0.2f;
+
+	frisbee2Down.anim.PushBack({ 117, 48, 16, 16 });
+	frisbee2Down.anim.PushBack({ 149, 48, 16, 16 });
+	frisbee2Down.anim.PushBack({ 181, 48, 16, 16 });
+	frisbee2Down.anim.PushBack({ 213, 48, 16, 16 });
+	frisbee2Down.speed.x = -5;
+	frisbee2Down.speed.y = 5;
+	frisbee2Down.lifetime = 180;
+	frisbee2Down.anim.speed = 0.2f;
+
 
 	return true;
 }

@@ -83,8 +83,8 @@ bool ModulePlayer2::Start()
 	currentAnimation = &idleAnim;
 
 
-	position.x = 264;
-	position.y = 100;
+	position.x = 20;
+	position.y = 120;
 
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
@@ -140,11 +140,32 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->frisbee2, position.x - 20, position.y, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
+	for (int i = 0; i < 1; i++) {
+		if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
+		{
+			App->particles->AddParticle(App->particles->frisbee2Up, position.x - 20, position.y -20, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(laserFx);
+			break;
+		}
+
+
+		if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
+		{
+			App->particles->AddParticle(App->particles->frisbee2Down, position.x - 20, position.y+20, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(laserFx);
+			break;
+
+		}
+
+		if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
+		{
+			App->particles->AddParticle(App->particles->frisbee2, position.x - 20, position.y, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(laserFx);
+			break;
+		}
 	}
+
+
 
 
 	collider->SetPos(position.x, position.y);
@@ -175,11 +196,11 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		//App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		//App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		//App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		//App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		//App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
 
 		App->audio->PlayFx(explosionFx);
 
