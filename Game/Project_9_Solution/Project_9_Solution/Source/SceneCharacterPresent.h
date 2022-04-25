@@ -34,7 +34,7 @@ public:
 	SDL_Texture* charactersPresent = nullptr;
 
 	// Sound effects indices
-	uint selectFx = 0;
+	uint hiromiSelected = 0;
 
 };
 
