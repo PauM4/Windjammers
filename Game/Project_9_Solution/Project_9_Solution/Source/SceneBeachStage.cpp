@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 #include "SDL/include/SDL.h"
 
@@ -52,6 +53,7 @@ bool SceneBeachStage::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
+	App->player2->Enable();
 	//App->enemies->Enable();
 
 	return ret;
