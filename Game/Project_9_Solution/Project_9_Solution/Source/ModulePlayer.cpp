@@ -57,13 +57,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	upAnim.speed = 0.1f;
 
 	//Move Left
-	leftAnim.PushBack({ 310, 404, 29, 36 });
-	leftAnim.PushBack({ 268, 403, 42, 36 });
-	leftAnim.PushBack({ 456, 404, 45, 31 });
-	leftAnim.PushBack({ 268, 403, 42, 36 });
-	leftAnim.PushBack({ 426, 404, 28, 33 });
-	leftAnim.PushBack({ 385, 404, 41, 36 });
-	leftAnim.PushBack({ 339, 404, 46, 29 });
+	leftAnim.PushBack({ 455, 404, 45, 32 });
+	leftAnim.PushBack({ 427, 404, 28, 33 });
+	leftAnim.PushBack({ 386, 404, 40, 36 });
+	leftAnim.PushBack({ 340, 404, 45, 29 });
+	leftAnim.PushBack({ 311, 404, 28, 36 });
+	leftAnim.PushBack({ 270, 404, 40, 35 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
@@ -155,6 +154,10 @@ Update_Status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
 		currentAnimation = &idleAnim;
+
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+		currentAnimation = &upAnim;
 
 	currentAnimation->Update();
 
