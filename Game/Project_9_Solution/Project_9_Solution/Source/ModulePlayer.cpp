@@ -84,7 +84,7 @@ bool ModulePlayer::Start()
 
 
 	position.x = 20;
-	position.y = 120;
+	position.y = 100;
 
 	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;

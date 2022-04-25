@@ -94,6 +94,7 @@ Update_Status ModuleCollisions::PreUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
+//DEBUG F1 COLLIDERS
 Update_Status ModuleCollisions::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
