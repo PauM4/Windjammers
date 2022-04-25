@@ -64,11 +64,15 @@ public:
 	Particle frisbeeUp;
 	Particle frisbeeDown;
 	Particle frisbeeProjectile;
+	Particle frisbeeProjectileUp;
+	Particle frisbeeProjectileDown;
 
 	Particle frisbee2;
 	Particle frisbee2Up;
 	Particle frisbee2Down;
 	Particle frisbeeProjectile2;
+	Particle frisbeeProjectile2Up;
+	Particle frisbeeProjectile2Down;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

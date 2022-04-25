@@ -168,13 +168,20 @@ Update_Status ModulePlayer2::Update()
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_5] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT)
 		{
-	
+			App->particles->AddParticle(App->particles->frisbeeProjectile2Up, position.x - 20, position.y - 20, Collider::Type::PLAYER_SHOT);
+			App->audio->PlayFx(laserFx);
+			break;
 		}
 
 
 		if (App->input->keys[SDL_SCANCODE_5] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT)
 		{
-		
+			if (App->input->keys[SDL_SCANCODE_5] == Key_State::KEY_DOWN)
+			{
+				App->particles->AddParticle(App->particles->frisbeeProjectile2Down, position.x - 20, position.y+20, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+				break;
+			}
 
 		}
 
