@@ -50,11 +50,17 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
-	Animation idleAnim;
-	Animation upAnim;
-	Animation downAnim;
+	Animation idleRAnim;
+	Animation idleLAnim;
+	Animation upLAnim;
+	Animation upRAnim;
+	Animation downLAnim;
+	Animation downRAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+
+	//Last Move
+	int last2 = 0;
 
 	// The player's collider
 	Collider* collider = nullptr;
