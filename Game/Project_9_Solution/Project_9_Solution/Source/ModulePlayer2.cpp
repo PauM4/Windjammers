@@ -98,7 +98,7 @@ bool ModulePlayer2::Start()
 	position.x = 259;
 	position.y = 100;
 
-	// TODO 4: Retrieve the player when playing a second time
+	//Retrieve the player when playing a second time
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
@@ -248,9 +248,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 
 		App->audio->PlayFx(explosionFx);
 
-		//TODO 3: Go back to the intro scene when the player gets killed
-		
-
+		//Go back to the intro scene when the player gets killed
 		destroyed = true;
 	}
 }
