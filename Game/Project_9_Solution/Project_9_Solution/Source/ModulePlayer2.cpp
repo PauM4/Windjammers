@@ -111,7 +111,7 @@ bool ModulePlayer2::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
+	texture = App->textures->Load("Assets/Sprites/Characters/Jap2.png");
 	currentAnimation = &idleLAnim;
 
 
