@@ -25,8 +25,14 @@ SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 	timerAnim.loop = false;
 	timerAnim.pingpong = false;
 	timerAnim.speed = 0.017f;
-	//Load p1 and p2 UI
-	//uiAnim.PushBack({})
+
+	//Load beach bg animation
+	bgBeachAnim.PushBack({ 0, 0, 304, 224 });
+	bgBeachAnim.PushBack({ 304, 0, 304, 224 });
+	bgBeachAnim.PushBack({ 608, 0, 304, 224 });
+	bgBeachAnim.PushBack({ 0, 224, 304, 224 });
+	//bgBeachAnim.PushBack({ 304, 224, 304, 224 });
+	bgBeachAnim.speed = 0.2f;
 
 }
 
@@ -43,7 +49,10 @@ bool SceneBeachStage::Start()
 	bool ret = true;
 
 	//FX de rounds
-	beachTexture = App->textures->Load("Assets/Sprites/Levels/PH_Beach.png");
+	//beachTexture = App->textures->Load("Assets/Sprites/Levels/PH_Beach.png");
+	bgBeachTexture = App->textures->Load("Assets/Sprites/Levels/bgBeachSpriteSheet.png");
+	currentBeachAnim = &bgBeachAnim;
+
 	App->audio->PlayMusic("Assets/Music/03_Flying Power Disc (Beach Court).ogg", 1.0f);
 	
 	// Load timer texture
@@ -66,6 +75,7 @@ bool SceneBeachStage::Start()
 Update_Status SceneBeachStage::Update()
 {
 	currentTimerAnim->Update();
+	currentBeachAnim->Update();
 
 	// DEBUG INSTANT WIN
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
@@ -93,7 +103,10 @@ Update_Status SceneBeachStage::Update()
 Update_Status SceneBeachStage::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(beachTexture, 0, 0, NULL);
+	//App->render->Blit(beachTexture, 0, 0, NULL);
+	//Beach background
+	SDL_Rect rectBeach = currentBeachAnim->GetCurrentFrame();
+	App->render->Blit(bgBeachTexture, 0, 0, &rectBeach);
 
 	//P1 UI
 	SDL_Rect p1Rect = { 359, 0, 15, 8 };
@@ -108,8 +121,9 @@ Update_Status SceneBeachStage::PostUpdate()
 	App->render->Blit(uiSpriteTexture, 40, 10, &japanFlagRect);
 	App->render->Blit(uiSpriteTexture, 230, 10, &japanFlagRect);
 
-	SDL_Rect rect = currentTimerAnim->GetCurrentFrame();
-	App->render->Blit(timerTexture, 144, 13, &rect);
+	//Timer
+	SDL_Rect rectTimer = currentTimerAnim->GetCurrentFrame();
+	App->render->Blit(timerTexture, 144, 13, &rectTimer);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
