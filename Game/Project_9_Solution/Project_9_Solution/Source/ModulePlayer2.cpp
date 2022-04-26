@@ -15,14 +15,14 @@
 ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
 {
 	// idle right animation
-	idleAnim.PushBack({ 393, 103, 23, 36 });
-	idleAnim.PushBack({ 370, 103, 23, 35 });
-	idleAnim.PushBack({ 347, 103, 23, 36 });
-	idleAnim.PushBack({ 323, 103, 24, 36 });
-	idleAnim.PushBack({ 299, 103, 24, 35 });
-	idleAnim.PushBack({ 275, 103, 24, 36 });
-	idleAnim.PushBack({ 251, 103, 23, 39 });
-	idleAnim.PushBack({ 227, 103, 23, 37 });
+	idleAnim.PushBack({ 393, 359, 23, 36 });
+	idleAnim.PushBack({ 370, 359, 23, 35 });
+	idleAnim.PushBack({ 347, 359, 23, 36 });
+	idleAnim.PushBack({ 323, 359, 24, 36 });
+	idleAnim.PushBack({ 299, 359, 24, 35 });
+	idleAnim.PushBack({ 275, 359, 24, 36 });
+	idleAnim.PushBack({ 251, 359, 23, 39 });
+	idleAnim.PushBack({ 227, 359, 23, 37 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.1f;
 
@@ -37,22 +37,22 @@ ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 240, 148, 29, 43 });
-	downAnim.PushBack({ 208, 148, 32, 38 });
-	downAnim.PushBack({ 179, 148, 29, 35 });
-	downAnim.PushBack({ 155, 148, 24, 41 });
-	downAnim.PushBack({ 125, 148, 30, 38 });
-	downAnim.PushBack({ 94, 148, 31, 34 });
+	downAnim.PushBack({ 240, 404, 29, 43 });
+	downAnim.PushBack({ 208, 404, 32, 38 });
+	downAnim.PushBack({ 179, 404, 29, 35 });
+	downAnim.PushBack({ 155, 404, 24, 41 });
+	downAnim.PushBack({ 125, 404, 30, 38 });
+	downAnim.PushBack({ 94, 404, 31, 34 });
 	downAnim.loop = true;
 	downAnim.speed = 0.1f;
 
 	//Move Up
-	upAnim.PushBack({ 150, 191, 30, 40 });
-	upAnim.PushBack({ 120, 191, 30, 51 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 0, 191, 30, 50 });
+	upAnim.PushBack({ 150, 447, 30, 40 });
+	upAnim.PushBack({ 120, 447, 30, 51 });
+	upAnim.PushBack({ 90, 447, 30, 50 });
+	upAnim.PushBack({ 60, 447, 30, 40 });
+	upAnim.PushBack({ 30, 447, 30, 53 });
+	upAnim.PushBack({ 0, 447, 30, 50 });
 	upAnim.loop = true;
 	upAnim.speed = 0.1f;
 
