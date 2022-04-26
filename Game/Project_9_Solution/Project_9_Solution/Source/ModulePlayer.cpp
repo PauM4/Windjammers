@@ -14,7 +14,7 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// idle right animation
+	// Idle Right Animation
 	idleRAnim.PushBack({ 393, 103, 23, 36 });
 	idleRAnim.PushBack({ 370, 103, 23, 35 });
 	idleRAnim.PushBack({ 347, 103, 23, 36 });
@@ -26,7 +26,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleRAnim.loop = true;
 	idleRAnim.speed = 0.1f;
 
-	//idle left animation
+	// Idle Left Animation
 	idleLAnim.PushBack({ 393, 359, 23, 36 });
 	idleLAnim.PushBack({ 370, 359, 23, 35 });
 	idleLAnim.PushBack({ 347, 359, 23, 36 });
@@ -38,7 +38,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleLAnim.loop = true;
 	idleLAnim.speed = 0.1f;
 
-	// move right
+	// Move Right
 	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.PushBack({ 426, 148, 28, 33 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
@@ -154,7 +154,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last == 1)
