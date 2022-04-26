@@ -9,36 +9,25 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleFrisbee.h"
 
 #include <stdio.h>
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// Idle Right Animation
-	idleRAnim.PushBack({ 393, 103, 23, 36 });
-	idleRAnim.PushBack({ 370, 103, 23, 35 });
-	idleRAnim.PushBack({ 347, 103, 23, 36 });
-	idleRAnim.PushBack({ 323, 103, 24, 36 });
-	idleRAnim.PushBack({ 299, 103, 24, 35 });
-	idleRAnim.PushBack({ 275, 103, 24, 36 });
-	idleRAnim.PushBack({ 251, 103, 23, 39 });
-	idleRAnim.PushBack({ 227, 103, 23, 37 });
-	idleRAnim.loop = true;
-	idleRAnim.speed = 0.1f;
+	// idle right animation
+	idleAnim.PushBack({ 393, 103, 23, 36 });
+	idleAnim.PushBack({ 370, 103, 23, 35 });
+	idleAnim.PushBack({ 347, 103, 23, 36 });
+	idleAnim.PushBack({ 323, 103, 24, 36 });
+	idleAnim.PushBack({ 299, 103, 24, 35 });
+	idleAnim.PushBack({ 275, 103, 24, 36 });
+	idleAnim.PushBack({ 251, 103, 23, 39 });
+	idleAnim.PushBack({ 227, 103, 23, 37 });
+	idleAnim.loop = true;
+	idleAnim.speed = 0.1f;
 
-	// Idle Left Animation
-	idleLAnim.PushBack({ 393, 359, 23, 36 });
-	idleLAnim.PushBack({ 370, 359, 23, 35 });
-	idleLAnim.PushBack({ 347, 359, 23, 36 });
-	idleLAnim.PushBack({ 323, 359, 24, 36 });
-	idleLAnim.PushBack({ 299, 359, 24, 35 });
-	idleLAnim.PushBack({ 275, 359, 24, 36 });
-	idleLAnim.PushBack({ 251, 359, 23, 39 });
-	idleLAnim.PushBack({ 227, 359, 23, 37 });
-	idleLAnim.loop = true;
-	idleLAnim.speed = 0.1f;
-
-	// Move Right
+	// move right
 	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.PushBack({ 426, 148, 28, 33 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
@@ -92,13 +81,13 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
-	currentAnimation = &idleRAnim;
+	currentAnimation = &idleAnim;
 
 
 	position.x = 20;
 	position.y = 100;
 
-	//Retrieve the player when playing a second time
+	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
@@ -106,12 +95,13 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
-int last = 1; //Last Move
-
 Update_Status ModulePlayer::Update()
 {
+	// Moving the player with the camera scroll
+	//App->player->position.x += 1;
+
 	//MOVIMIENTO
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && !disco)
 	{
 		position.x -= speed;
 
@@ -120,10 +110,9 @@ Update_Status ModulePlayer::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
-		last = 0;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110)
+	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && !disco)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
@@ -131,10 +120,9 @@ Update_Status ModulePlayer::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
-		last = 1;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150)
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && !disco)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -144,7 +132,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50)
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && !disco)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -154,43 +142,35 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last == 1)
-		currentAnimation = &idleRAnim;
-
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last == 0)
-		currentAnimation = &idleLAnim;
-	
 	//LANZAMIENTO DE DISCO NORMAL
 	for (int i = 0; i < 1; i++) {
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
+		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
 		{
-			App->particles->AddParticle(5, -5, App->particles->frisbee, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->frisbee->mov = 1;
+			disco = false;
+			App->frisbee->posesion = true;
 			break;
 		}
 
 
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco)
+		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
 		{
-			App->particles->AddParticle(5, 5, App->particles->frisbee, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->frisbee->mov = 3;
+			disco = false;
+			App->frisbee->posesion = true;
 			break;
 
 		}
 
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco)
-		{
-			App->particles->AddParticle(5, 0, App->particles->frisbee, position.x + 20, position.y, Collider::Type::PLAYER_SHOT );
-			App->audio->PlayFx(laserFx);
 
+		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == false)
+		{
+			App->frisbee->mov = 2;
+			disco = false;
+			App->frisbee->posesion = true;
 			break;
 		}
+
 	}
 
 	//LANZAMIENTO DE DISCO PARÁBOLA
@@ -219,7 +199,18 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+
+
 	collider->SetPos(position.x, position.y);
+
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
+		currentAnimation = &idleAnim;
+
+
 
 	currentAnimation->Update();
 
@@ -242,9 +233,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && destroyed == false)
 	{
 		//creo q si ya lo tenemos puesto en el disco que si choca no haga nada, no deberia hacer falta ponerlo aqui tmb
+		frisbeeCollision();
+
 	}
 }
 
 void ModulePlayer::frisbeeCollision() {
+	App->frisbee->mov = 0;
 	disco = true;
+	App->frisbee->xspeed = 3;
+	App->frisbee->yspeed = 3;
+	App->frisbee->position.x = position.x + 28;
+	App->frisbee->position.y = position.y;
+	App->frisbee->posesion = false;
 }

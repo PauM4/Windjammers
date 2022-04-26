@@ -41,14 +41,13 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
-	
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
-	Animation idleRAnim;
-	Animation idleLAnim;
+	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
 	Animation rightAnim;

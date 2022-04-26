@@ -49,13 +49,13 @@ bool ModuleFrisbee::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
-	
-	
-	position.x = 150;
-	position.y = 180;
-	
 
-	
+
+	position.x = 20;
+	position.y = 100;
+
+
+	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::FRISBEE, this);
 
@@ -68,51 +68,116 @@ Update_Status ModuleFrisbee::Update()
 		/*uint delay = 1500;
 		SDL_Delay(delay);*/
 
-		if (position.x > App->player->position.x && position.y > App->player->position.y && !inicio) {
-
-			if (position.x == App->player->position.x && position.y > App->player->position.y) {
-				inicio = true;
-			}
-			position.x -= 3; //PITAGORAS
+	if (arbitro == 1) {
+		App->player->position.x = 20;
+		App->player->position.y = 100;
+		App->player2->position.x = 264;
+		App->player2->position.y = 100;
+		if (position.x != App->player->position.x || position.y != App->player->position.y) {
+			position.x -= 3;
 			position.y -= 2;
-			
 		}
-	
-		
-	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
-	{
-		position.x += speed;
-		if (currentAnimation2 != &moving)
-		{
-			moving.Reset();
-			currentAnimation2 = &moving;
+	}
+	if (arbitro == 2) {
+		App->player->position.x = 20;
+		App->player->position.y = 100;
+		App->player2->position.x = 264;
+		App->player2->position.y = 100;
+		if (position.x != App->player2->position.x || position.y != App->player2->position.y) {
+			position.x += 3;
+			position.y -= 2;
+		}
+	}
+
+
+
+
+	//MOV FRISBEE HACIA ARRIBA
+	if (mov == 1 && position.x >= 19 && position.x <= 276) {
+
+		if (pared == false && position.y >= 50) {
+
+			position.x += xspeed;
+			position.y -= yspeed;
+
+		}
+		else {
+			pared = true;
+		}
+
+		if (pared == true && position.y < 170) {
+			position.x += xspeed;
+			position.y += yspeed;
+		}
+		else {
+			pared = false;
 		}
 
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
-	{
-		position.x += speed;
-		position.y -= speed;
-		if (currentAnimation2 != &moving)
-		{
-			moving.Reset();
-			currentAnimation2 = &moving;
+	//MOV FRISBEE HORIZONTAL - PARA PLAYER2 *-1
+	if (mov == 2 && position.x >= 19 && position.x <= 276) {
+		position.x += xspeed;
+	}
+
+	//MOV FRISBEE HACIA ABAJO
+	if (mov == 3 && position.x >= 19 && position.x <= 276) {
+
+		if (pared == false && position.y < 170) {
+
+			position.x += xspeed;
+			position.y += yspeed;
+
+		}
+		else {
+			pared = true;
+		}
+
+		if (pared == true && position.y >= 50) {
+			position.x += xspeed;
+			position.y -= yspeed;
+		}
+		else {
+			pared = false;
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
-	{
-		position.x += speed;
-		position.y += speed;
-		if (currentAnimation2 != &moving)
-		{
-			moving.Reset();
-			currentAnimation2 = &moving;
+
+	if (position.x <= 19 || position.x >= 276) {
+		mov = 0;
+
+		//aqui tendremos que llamar la accion del arbitro que envia el disco al player 1
+
+		if (position.x <= 19) {
+			if (position.y >= 94 && position.y <= 144) {
+				App->player2->score += 5;
+				arbitro = 1;
+			}
+			else {
+				App->player2->score += 3;
+				arbitro = 1;
+			}
 		}
+		if (position.x >= 276) {
+			if (position.y >= 94 && position.y <= 144) {
+				App->player->score += 5;
+				arbitro = 2;
+			}
+			else {
+				App->player->score += 3;
+				arbitro = 2;
+			}
+		}
+
+		position.x = 150;
+		position.y = 200;
+
+
 	}
+
+
 	currentAnimation2->Update();
-	
+
 	collider->SetPos(position.x, position.y);
 
 
@@ -131,8 +196,7 @@ void ModuleFrisbee::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
-		App->player->frisbeeCollision();
+		arbitro = 0;
 
 	}
 }
-

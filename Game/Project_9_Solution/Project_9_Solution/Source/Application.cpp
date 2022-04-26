@@ -27,27 +27,26 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 
-	modules[0] =	window =		new ModuleWindow(true);
-	modules[1] =	input =			new ModuleInput(true);
-	modules[2] =	textures =		new ModuleTextures(true);
-	modules[3] =	audio =			new ModuleAudio(true);
+	modules[0] = window = new ModuleWindow(true);
+	modules[1] = input = new ModuleInput(true);
+	modules[2] = textures = new ModuleTextures(true);
+	modules[3] = audio = new ModuleAudio(true);
 
-	// Canviar ordre
-	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	sceneTitle =	new SceneTitle(false);
-	modules[6] =	sceneCharacterSelect = new SceneCharacterSelect(false);
-	modules[7] =	sceneStageSelect =	new SceneStageSelect(false);
-	modules[8] =	sceneCharacterPresent = new SceneCharacterPresent(false);
-	modules[9] =	sceneBeachStage = new SceneBeachStage(false);
-	
-	modules[10] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[11] =   player2 =       new ModulePlayer2(false);	//Player starts disabled
+	modules[4] = sceneIntro = new SceneIntro(true);
+	modules[5] = sceneTitle = new SceneTitle(false);
+	modules[6] = sceneCharacterSelect = new SceneCharacterSelect(false);
+	modules[7] = sceneStageSelect = new SceneStageSelect(false);
+	modules[8] = sceneBeachStage = new SceneBeachStage(false);
+	modules[9] = sceneCharacterPresent = new SceneCharacterPresent(false);
+
+	modules[10] = player = new ModulePlayer(false);	//Player starts disabled
+	modules[11] = player2 = new ModulePlayer2(false);	//Player starts disabled
 	modules[12] = frisbee = new ModuleFrisbee(false);
-	modules[13] =	particles =		new ModuleParticles(true);
-	modules[14] =	collisions =	new ModuleCollisions(true);
-	modules[15] =	fade =			new ModuleFadeToBlack(true);
-	modules[16] =	fonts =			new ModuleFonts(true);
-	modules[17] =	render =		new ModuleRender(true);
+	modules[13] = particles = new ModuleParticles(true);
+	modules[14] = collisions = new ModuleCollisions(true);
+	modules[15] = fade = new ModuleFadeToBlack(true);
+	modules[16] = fonts = new ModuleFonts(true);
+	modules[17] = render = new ModuleRender(true);
 }
 
 Application::~Application()
@@ -91,7 +90,7 @@ Update_Status Application::Update()
 
 	return ret;
 }
- 
+
 bool Application::CleanUp()
 {
 	bool ret = true;
