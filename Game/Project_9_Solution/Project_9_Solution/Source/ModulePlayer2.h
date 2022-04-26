@@ -62,6 +62,9 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
+	bool disco = false;
+	void frisbeeCollision();
+
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;

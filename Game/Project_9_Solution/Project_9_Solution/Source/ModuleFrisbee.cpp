@@ -67,15 +67,17 @@ Update_Status ModuleFrisbee::Update()
 	//while (position.x != App->player->position.x && position.y != App->player->position.y) {
 		/*uint delay = 1500;
 		SDL_Delay(delay);*/
+
 		if (position.x > App->player->position.x && position.y > App->player->position.y && !inicio) {
+
 			if (position.x == App->player->position.x && position.y > App->player->position.y) {
 				inicio = true;
 			}
-			position.x -= 3;
+			position.x -= 3; //PITAGORAS
 			position.y -= 2;
 			
 		}
-	//}
+	
 		
 	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
 	{
