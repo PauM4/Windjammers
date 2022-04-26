@@ -83,7 +83,7 @@ bool ModulePlayer2::Start()
 	currentAnimation = &idleAnim;
 
 
-	position.x = 264;
+	position.x = 259;
 	position.y = 100;
 
 	// TODO 4: Retrieve the player when playing a second time
