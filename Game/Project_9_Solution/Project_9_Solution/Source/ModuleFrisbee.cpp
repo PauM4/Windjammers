@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "SDL/include/SDL.h"
 
 ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 {
@@ -49,9 +50,12 @@ bool ModuleFrisbee::Start()
 
 	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
 	
-
+	
 	position.x = 150;
 	position.y = 180;
+	
+
+	
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::FRISBEE, this);
 
@@ -60,8 +64,19 @@ bool ModuleFrisbee::Start()
 
 Update_Status ModuleFrisbee::Update()
 {
-	
-
+	//while (position.x != App->player->position.x && position.y != App->player->position.y) {
+		/*uint delay = 1500;
+		SDL_Delay(delay);*/
+		if (position.x > App->player->position.x && position.y > App->player->position.y && !inicio) {
+			if (position.x == App->player->position.x && position.y > App->player->position.y) {
+				inicio = true;
+			}
+			position.x -= 3;
+			position.y -= 2;
+			
+		}
+	//}
+		
 	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
 	{
 		position.x += speed;
