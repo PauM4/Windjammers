@@ -15,6 +15,19 @@
 
 SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 {
+	//Load animation Timer test
+	int posX = 15;
+	for (int i = 0; i < 32; ++i)
+	{
+		timerAnim.PushBack({ posX, 0, 15, 15 });
+		posX += 15;
+	}
+	timerAnim.loop = false;
+	timerAnim.pingpong = false;
+	timerAnim.speed = 0.017f;
+
+	//Load p1 and p2 UI
+	//uiAnim.PushBack({})
 
 }
 
@@ -33,6 +46,10 @@ bool SceneBeachStage::Start()
 	//FX de rounds
 	beachTexture = App->textures->Load("Assets/Sprites/Levels/PH_Beach.png");
 	App->audio->PlayMusic("Assets/Music/03_Flying Power Disc (Beach Court).ogg", 1.0f);
+	
+	// Load timer texture
+	timerTexture = App->textures->Load("Assets/Sprites/UI/Fonts/timerSpriteSheet.png");
+	currentTimerAnim = &timerAnim;
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -46,7 +63,7 @@ bool SceneBeachStage::Start()
 
 Update_Status SceneBeachStage::Update()
 {
-	//App->render->camera.x += 3;
+	currentTimerAnim->Update();
 
 	// DEBUG INSTANT WIN
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
@@ -65,6 +82,7 @@ Update_Status SceneBeachStage::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
 
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -73,6 +91,14 @@ Update_Status SceneBeachStage::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(beachTexture, 0, 0, NULL);
+	SDL_Rect rect = currentTimerAnim->GetCurrentFrame();
+	App->render->Blit(timerTexture, 144, 13, &rect);
+	
+	//if (timerAnim.HasFinished())
+	//{
+	//	SDL_Rect rectTimerUp = { 0, 0, 15, 15 };
+	//	App->render->Blit(timerTexture, 144, 13, &rectTimerUp);
+	//}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

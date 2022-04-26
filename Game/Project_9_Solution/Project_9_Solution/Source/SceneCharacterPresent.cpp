@@ -59,8 +59,6 @@ Update_Status SceneCharacterPresent::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-// Update: draw background
-int hola = 0;
 Update_Status SceneCharacterPresent::PostUpdate()
 {
 	// Draw everything --------------------------------------

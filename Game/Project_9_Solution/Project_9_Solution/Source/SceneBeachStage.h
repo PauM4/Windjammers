@@ -34,9 +34,18 @@ public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* beachTexture = nullptr;
+	SDL_Texture* timerTexture = nullptr;
+	SDL_Texture* uiSpriteTexture = nullptr;
+
+	Animation uiAnim;
+	Animation timerAnim;
+	Animation timeUpAnim;
+	Animation* currentTimerAnim = nullptr;
 
 	// Sound effects indices
 	//uint winFx = 0;
+
+	
 };
 
 #endif
