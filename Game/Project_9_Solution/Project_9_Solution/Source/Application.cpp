@@ -36,8 +36,8 @@ Application::Application()
 	modules[5] =	sceneTitle =	new SceneTitle(false);
 	modules[6] =	sceneCharacterSelect = new SceneCharacterSelect(false);
 	modules[7] =	sceneStageSelect =	new SceneStageSelect(false);
-	modules[8] =	sceneBeachStage = new SceneBeachStage(true);
-	modules[9] =	sceneCharacterPresent = new SceneCharacterPresent(false);
+	modules[8] =	sceneBeachStage = new SceneBeachStage(false);
+	modules[9] =	sceneCharacterPresent = new SceneCharacterPresent(true);
 	
 	modules[10] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[11] =   player2 =       new ModulePlayer2(false);	//Player starts disabled

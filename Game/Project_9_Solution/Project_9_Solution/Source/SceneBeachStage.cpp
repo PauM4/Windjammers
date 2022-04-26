@@ -25,7 +25,6 @@ SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 	timerAnim.loop = false;
 	timerAnim.pingpong = false;
 	timerAnim.speed = 0.017f;
-
 	//Load p1 and p2 UI
 	//uiAnim.PushBack({})
 
