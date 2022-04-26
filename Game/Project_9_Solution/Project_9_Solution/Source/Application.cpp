@@ -15,7 +15,6 @@
 #include "SceneBeachStage.h"
 
 #include "ModuleParticles.h"
-#include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -44,12 +43,10 @@ Application::Application()
 	modules[11] =   player2 =       new ModulePlayer2(false);	//Player starts disabled
 	modules[12] = frisbee = new ModuleFrisbee(false);
 	modules[13] =	particles =		new ModuleParticles(true);
-	modules[14] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-// AAAAAAAAAAAAAAH
-	modules[15] =	collisions =	new ModuleCollisions(true);
-	modules[16] =	fade =			new ModuleFadeToBlack(true);
-	modules[17] =	fonts =			new ModuleFonts(true);
-	modules[18] =	render =		new ModuleRender(true);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =	fonts =			new ModuleFonts(true);
+	modules[17] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
