@@ -92,6 +92,9 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
 
+	char lookupTable[] = { "0123456789G " };
+	scoreFont = App->fonts->Load("Assets/Sprites/UI/Fonts/scoreFont.png", lookupTable, 1);
+
 	return ret;
 }
 
@@ -216,6 +219,14 @@ Update_Status ModulePlayer::PostUpdate()
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
+
+	// Draw UI (score) --------------------------------------
+	sprintf_s(scoreText, 10, "%2d", score);
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(115, 16, scoreFont, scoreText);
+
+	//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
