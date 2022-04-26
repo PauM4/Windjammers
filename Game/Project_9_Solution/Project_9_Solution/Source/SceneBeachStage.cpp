@@ -51,6 +51,9 @@ bool SceneBeachStage::Start()
 	timerTexture = App->textures->Load("Assets/Sprites/UI/Fonts/timerSpriteSheet.png");
 	currentTimerAnim = &timerAnim;
 
+	// Load UI Texture
+	uiSpriteTexture = App->textures->Load("Assets/Sprites/UI/UISpriteSheet_Upgrade.png");
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -91,14 +94,22 @@ Update_Status SceneBeachStage::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(beachTexture, 0, 0, NULL);
+
+	//P1 UI
+	SDL_Rect p1Rect = { 359, 0, 15, 8 };
+	App->render->Blit(uiSpriteTexture, 10, 10, &p1Rect);
+
+	//P2 UI
+	SDL_Rect p2Rect = { 374, 0, 16, 8 };
+	App->render->Blit(uiSpriteTexture, 200, 10, &p2Rect);
+
+	//Japan Flag x2
+	SDL_Rect japanFlagRect = { 460, 0, 15, 9 };
+	App->render->Blit(uiSpriteTexture, 40, 10, &japanFlagRect);
+	App->render->Blit(uiSpriteTexture, 230, 10, &japanFlagRect);
+
 	SDL_Rect rect = currentTimerAnim->GetCurrentFrame();
 	App->render->Blit(timerTexture, 144, 13, &rect);
-	
-	//if (timerAnim.HasFinished())
-	//{
-	//	SDL_Rect rectTimerUp = { 0, 0, 15, 15 };
-	//	App->render->Blit(timerTexture, 144, 13, &rectTimerUp);
-	//}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

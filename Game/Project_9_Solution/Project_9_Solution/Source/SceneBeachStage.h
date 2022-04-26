@@ -37,9 +37,7 @@ public:
 	SDL_Texture* timerTexture = nullptr;
 	SDL_Texture* uiSpriteTexture = nullptr;
 
-	Animation uiAnim;
 	Animation timerAnim;
-	Animation timeUpAnim;
 	Animation* currentTimerAnim = nullptr;
 
 	// Sound effects indices
