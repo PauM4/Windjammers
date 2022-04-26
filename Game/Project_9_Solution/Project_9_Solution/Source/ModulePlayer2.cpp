@@ -97,9 +97,6 @@ bool ModulePlayer2::Start()
 
 Update_Status ModulePlayer2::Update()
 {
-	// Moving the player with the camera scroll
-	//App->player->position.x += 1;
-
 	//MOVIMIENTO
 	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 155 && !disco)
 	{
@@ -141,6 +138,12 @@ Update_Status ModulePlayer2::Update()
 			currentAnimation = &upAnim;
 		}
 	}
+
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE)
+		currentAnimation = &idleAnim;
 
 	//LANZAMIENTO DE DISCO NORMAL
 	for (int i = 0; i < 1; i++) {
@@ -197,16 +200,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-
-
-
 	collider->SetPos(position.x, position.y);
-
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE)
-		currentAnimation = &idleAnim;
 
 	currentAnimation->Update();
 
