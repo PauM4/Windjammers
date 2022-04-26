@@ -14,17 +14,29 @@
 
 ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
 {
+	// idle left animation
+	idleLAnim.PushBack({ 393, 359, 23, 36 });
+	idleLAnim.PushBack({ 370, 359, 23, 35 });
+	idleLAnim.PushBack({ 347, 359, 23, 36 });
+	idleLAnim.PushBack({ 323, 359, 24, 36 });
+	idleLAnim.PushBack({ 299, 359, 24, 35 });
+	idleLAnim.PushBack({ 275, 359, 24, 36 });
+	idleLAnim.PushBack({ 251, 359, 23, 39 });
+	idleLAnim.PushBack({ 227, 359, 23, 37 });
+	idleLAnim.loop = true;
+	idleLAnim.speed = 0.1f;
+
 	// idle right animation
-	idleAnim.PushBack({ 393, 359, 23, 36 });
-	idleAnim.PushBack({ 370, 359, 23, 35 });
-	idleAnim.PushBack({ 347, 359, 23, 36 });
-	idleAnim.PushBack({ 323, 359, 24, 36 });
-	idleAnim.PushBack({ 299, 359, 24, 35 });
-	idleAnim.PushBack({ 275, 359, 24, 36 });
-	idleAnim.PushBack({ 251, 359, 23, 39 });
-	idleAnim.PushBack({ 227, 359, 23, 37 });
-	idleAnim.loop = true;
-	idleAnim.speed = 0.1f;
+	idleRAnim.PushBack({ 393, 103, 23, 36 });
+	idleRAnim.PushBack({ 370, 103, 23, 35 });
+	idleRAnim.PushBack({ 347, 103, 23, 36 });
+	idleRAnim.PushBack({ 323, 103, 24, 36 });
+	idleRAnim.PushBack({ 299, 103, 24, 35 });
+	idleRAnim.PushBack({ 275, 103, 24, 36 });
+	idleRAnim.PushBack({ 251, 103, 23, 39 });
+	idleRAnim.PushBack({ 227, 103, 23, 37 });
+	idleRAnim.loop = true;
+	idleRAnim.speed = 0.1f;
 
 	// move right
 	rightAnim.PushBack({ 454, 148, 45, 32 });
@@ -80,7 +92,7 @@ bool ModulePlayer2::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
-	currentAnimation = &idleAnim;
+	currentAnimation = &idleLAnim;
 
 
 	position.x = 259;
@@ -94,11 +106,10 @@ bool ModulePlayer2::Start()
 	return ret;
 }
 
+int last2 = 0; //Last Move
+
 Update_Status ModulePlayer2::Update()
 {
-	// Moving the player with the camera scroll
-	//App->player->position.x += 1;
-
 	//MOVIMIENTO
 	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 159)
 	{
@@ -109,6 +120,7 @@ Update_Status ModulePlayer2::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
+		last2 = 0;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && position.x < 258)
@@ -119,6 +131,7 @@ Update_Status ModulePlayer2::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
+		last2 = 1;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && position.y < 150)
@@ -167,6 +180,18 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 0)
+		currentAnimation = &idleLAnim;
+
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1)
+		currentAnimation = &idleRAnim;
+
 	//LANZAMIENTO DE DISCO PARÁBOLA
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco)
@@ -193,16 +218,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-
-
-
 	collider->SetPos(position.x, position.y);
-
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE)
-		currentAnimation = &idleAnim;
 
 	currentAnimation->Update();
 
