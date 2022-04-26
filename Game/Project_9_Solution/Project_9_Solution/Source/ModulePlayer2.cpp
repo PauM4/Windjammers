@@ -100,7 +100,7 @@ Update_Status ModulePlayer2::Update()
 	//App->player->position.x += 1;
 
 	//MOVIMIENTO
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 155)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 159)
 	{
 		position.x -= speed;
 
@@ -111,7 +111,7 @@ Update_Status ModulePlayer2::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && position.x < 254)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && position.x < 258)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_UP] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_DOWN] != Key_State::KEY_REPEAT)
