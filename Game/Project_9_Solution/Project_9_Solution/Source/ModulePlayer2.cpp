@@ -194,6 +194,11 @@ Update_Status ModulePlayer2::Update()
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1)
 		currentAnimation = &idleRAnim;
 
+	//Al recibir disco vuelve a su idle
+	if (last2 == 1 && disco) {
+		currentAnimation = &idleLAnim;
+	}
+
 	//LANZAMIENTO DE DISCO NORMAL
 	for (int i = 0; i < 1; i++) {
 		if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == true)
