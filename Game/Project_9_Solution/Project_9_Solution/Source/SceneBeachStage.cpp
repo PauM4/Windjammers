@@ -84,6 +84,16 @@ Update_Status SceneBeachStage::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
 
+	//Cambiar de Ronda
+	if (timerAnim.HasFinished() || App->player->score >= 12 || App->player2->score >= 12) {
+		if (App->player->score > App->player2->score) {
+			App->player->round += 1;
+		}
+
+		if (App->player2->score > App->player->score) {
+			App->player2->round += 1;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
