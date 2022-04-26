@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 20
+#define NUM_MODULES 19
 
 class Module;
 class ModuleWindow;
@@ -19,7 +19,6 @@ class SceneCharacterSelect;
 class SceneStageSelect;
 class SceneCharacterPresent;
 class SceneBeachStage;
-class SceneLevel1;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleEnemies;
@@ -67,7 +66,6 @@ public:
 	SceneStageSelect* sceneStageSelect = nullptr;
 	SceneCharacterPresent* sceneCharacterPresent = nullptr;
 	SceneBeachStage* sceneBeachStage = nullptr;
-	SceneLevel1* sceneLevel_1 = nullptr;
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;

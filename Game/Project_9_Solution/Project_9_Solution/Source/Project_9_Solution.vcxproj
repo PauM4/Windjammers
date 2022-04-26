@@ -93,7 +93,6 @@
     <ClInclude Include="SceneCharacterSelect.h" />
     <ClInclude Include="SceneCharacterPresent.h" />
     <ClInclude Include="SceneIntro.h" />
-    <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="ModuleRender.h" />
@@ -128,7 +127,6 @@
     <ClCompile Include="SceneCharacterSelect.cpp" />
     <ClCompile Include="SceneCharacterPresent.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
-    <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />

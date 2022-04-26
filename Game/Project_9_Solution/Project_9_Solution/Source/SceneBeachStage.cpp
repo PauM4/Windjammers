@@ -10,6 +10,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleFrisbee.h"
 
 #include "SDL/include/SDL.h"
 
@@ -54,6 +55,7 @@ bool SceneBeachStage::Start()
 
 	App->player->Enable();
 	App->player2->Enable();
+	App->frisbee->Enable();
 	//App->enemies->Enable();
 
 	return ret;

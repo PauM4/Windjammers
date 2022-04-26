@@ -42,7 +42,7 @@ ModuleFrisbee::~ModuleFrisbee()
 
 bool ModuleFrisbee::Start()
 {
-
+	currentAnimation2 = &moving;
 	LOG("Loading frisbee textures");
 
 	bool ret = true;
@@ -50,8 +50,8 @@ bool ModuleFrisbee::Start()
 	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
 	
 
-	position.x = App->player->position.x; // --------------- Asigno al disco la posicion inicial de donde se encuentre el personaje
-	position.y = App->player->position.y;
+	position.x = 150;
+	position.y = 180;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::FRISBEE, this);
 
@@ -60,7 +60,7 @@ bool ModuleFrisbee::Start()
 
 Update_Status ModuleFrisbee::Update()
 {
-	currentAnimation2 = &moving;
+	
 
 	if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
 	{
