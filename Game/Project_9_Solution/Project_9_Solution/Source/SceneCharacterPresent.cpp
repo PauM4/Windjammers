@@ -53,7 +53,7 @@ Update_Status SceneCharacterPresent::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 30);
+		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 15);
 	}
 
 	currentAnimation->Update();
@@ -64,9 +64,9 @@ Update_Status SceneCharacterPresent::Update()
 Update_Status SceneCharacterPresent::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(charactersPresentTexture, 0, 0, NULL);
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(bgTexture, 0, 0, &rect);
+	App->render->Blit(charactersPresentTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
