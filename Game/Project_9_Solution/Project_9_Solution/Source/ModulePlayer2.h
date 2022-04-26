@@ -80,7 +80,8 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 	//Numero de rondas ganadas
-	int round;
+	int round = 0;
+	int set = 0;
 
 };
 

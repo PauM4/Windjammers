@@ -84,16 +84,52 @@ Update_Status SceneBeachStage::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
 
-	//Cambiar de Ronda
-	if (timerAnim.HasFinished() || App->player->score >= 12 || App->player2->score >= 12) {
-		if (App->player->score > App->player2->score) {
-			App->player->round += 1;
+	//Cambiar de Ronda y Dar puntos de la ronda
+	if (App->player->score != App->player2->score) { //|| App->player->score > 12 || App->player2->score > 12
+
+		if (App->player->score >= 12 || App->player2->score >= 12) {
+
+			if (App->player->score > App->player2->score + 2) {
+				App->player->round += 1;
+			}
+
+			if (App->player2->score > App->player->score + 2) {
+				App->player2->round += 1;
+			}
+
+
 		}
 
-		if (App->player2->score > App->player->score) {
-			App->player2->round += 1;
+		if (timerAnim.HasFinished()) {
+			if (App->player->score > App->player2->score) {
+				App->player->round += 1;
+			}
+
+			if (App->player2->score > App->player->score) {
+				App->player2->round += 1;
+			}
 		}
+
 	}
+
+	if (App->player->score == 2) {
+		App->player->score = 0;
+		App->player->set += 1;
+	}
+
+	if (App->player2->score == 2) {
+		App->player2->score = 0;
+		App->player2->set += 1;
+	}
+
+	//Determinar el Ganador
+	if (App->player->set = 2) {
+
+	}
+	if (App->player2->set = 2) {
+
+	}
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
