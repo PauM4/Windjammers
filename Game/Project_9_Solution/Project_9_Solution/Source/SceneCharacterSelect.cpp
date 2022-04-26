@@ -24,7 +24,7 @@ bool SceneCharacterSelect::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/UI/characterSelectBackground.png");
+	bgTexture = App->textures->Load("Assets/Sprites/UI/SelectPlayer.png");
 	App->audio->PlayMusic("Assets/Music/01_Get Ready (Select Screen).ogg", 0.0f);
 	hiromiSelected = App->audio->LoadFx("Assets/Fx/HiromiSelected.wav");
 	selectFx = App->audio->LoadFx("Assets/FX/Select.wav");
