@@ -7,7 +7,6 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleCollisions.h"
-#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleFrisbee.h"
@@ -35,28 +34,12 @@ bool SceneBeachStage::Start()
 	beachTexture = App->textures->Load("Assets/Sprites/Levels/PH_Beach.png");
 	App->audio->PlayMusic("Assets/Music/03_Flying Power Disc (Beach Court).ogg", 1.0f);
 
-
-	//Bottomside collider 
-	// **********************ALTRES COLLIDERS AQUÍ; FER QUE NO EXPLOTI
-	//App->collisions->AddCollider({ 0, 37, 304, 15 }, Collider::Type::WALL);
-
-	//First two columns colliders
-/*	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);*/
-
-	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::REDBIRD, 600, 80);
-	//App->enemies->AddEnemy(Enemy_Type::REDBIRD, 625, 80);
-	//App->enemies->AddEnemy(Enemy_Type::REDBIRD, 640, 80);
-	//App->enemies->AddEnemy(Enemy_Type::REDBIRD, 665, 80);
-
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
 	App->player->Enable();
 	App->player2->Enable();
 	App->frisbee->Enable();
-	//App->enemies->Enable();
 
 	return ret;
 }
@@ -97,7 +80,6 @@ Update_Status SceneBeachStage::PostUpdate()
 bool SceneBeachStage::CleanUp()
 {
 	App->player->Disable();
-	App->enemies->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
