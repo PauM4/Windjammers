@@ -43,6 +43,11 @@ public:
 	// Sound effects indices
 	//uint winFx = 0;
 
+	void EndRound(int arbitro);
+	void ScoreRound(int arbitro);
+	void ScoreSet();
+	void Win();
+	bool suddenDeath = false;
 	
 };
 

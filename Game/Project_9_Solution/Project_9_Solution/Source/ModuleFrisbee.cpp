@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "SDL/include/SDL.h"
+#include "SceneBeachStage.h"
 
 ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 {
@@ -71,7 +72,7 @@ Update_Status ModuleFrisbee::Update()
 	if (arbitro == 1) {
 		App->player->position.x = 20;
 		App->player->position.y = 100;
-		App->player2->position.x = 264;
+		App->player2->position.x = 259;
 		App->player2->position.y = 100;
 		if (position.x != App->player->position.x || position.y != App->player->position.y) {
 			position.x -= 3;
@@ -81,16 +82,13 @@ Update_Status ModuleFrisbee::Update()
 	if (arbitro == 2) {
 		App->player->position.x = 20;
 		App->player->position.y = 100;
-		App->player2->position.x = 264;
+		App->player2->position.x = 259;
 		App->player2->position.y = 100;
 		if (position.x != App->player2->position.x || position.y != App->player2->position.y) {
 			position.x += 3;
 			position.y -= 2;
 		}
 	}
-
-
-
 
 	//MOV FRISBEE HACIA ARRIBA
 	if (mov == 1 && position.x >= 19 && position.x <= 276) {
@@ -141,7 +139,7 @@ Update_Status ModuleFrisbee::Update()
 			pared = false;
 		}
 	}
-
+	
 
 	if (position.x <= 19 || position.x >= 276) {
 		mov = 0;
@@ -151,21 +149,42 @@ Update_Status ModuleFrisbee::Update()
 		if (position.x <= 19) {
 			if (position.y >= 94 && position.y <= 144) {
 				App->player2->score += 5;
-				arbitro = 1;
+				//arbitro = 1;
+				if (App->sceneBeachStage->suddenDeath) {
+					App->sceneBeachStage->ScoreSet();
+				}
+				App->sceneBeachStage->ScoreRound(1);
+				//App->sceneBeachStage->EndRound(1);
+				
 			}
 			else {
 				App->player2->score += 3;
-				arbitro = 1;
+				//arbitro = 1;
+				if (App->sceneBeachStage->suddenDeath) {
+					App->sceneBeachStage->ScoreSet();
+				}
+				App->sceneBeachStage->ScoreRound(1);
+				//App->sceneBeachStage->EndRound(1);
 			}
 		}
 		if (position.x >= 276) {
 			if (position.y >= 94 && position.y <= 144) {
 				App->player->score += 5;
-				arbitro = 2;
+				//arbitro = 2;
+				if (App->sceneBeachStage->suddenDeath) {
+					App->sceneBeachStage->ScoreSet();
+				}
+				App->sceneBeachStage->ScoreRound(2);
+				//App->sceneBeachStage->EndRound(2);
 			}
 			else {
 				App->player->score += 3;
-				arbitro = 2;
+				//arbitro = 2;
+				if (App->sceneBeachStage->suddenDeath) {
+					App->sceneBeachStage->ScoreSet();
+				}
+				App->sceneBeachStage->ScoreRound(2);
+				//App->sceneBeachStage->EndRound(2);
 			}
 		}
 
