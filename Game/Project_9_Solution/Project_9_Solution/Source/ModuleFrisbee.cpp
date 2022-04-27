@@ -55,8 +55,8 @@ bool ModuleFrisbee::Start()
 	texture = App->textures->Load("Assets/Sprites/Levels/Beach.png");
 
 
-	position.x = 20;
-	position.y = 100;
+	position.x = 150;
+	position.y = 200;
 
 
 	destroyed = false;
@@ -77,6 +77,8 @@ Update_Status ModuleFrisbee::Update()
 		App->player->position.y = 100;
 		App->player2->position.x = 259;
 		App->player2->position.y = 100;
+		App->player->currentAnimation = &App->player->idleRAnim;
+		App->player2->currentAnimation = &App->player2->idleLAnim;
 		if (position.x != App->player->position.x || position.y != App->player->position.y) {
 			position.x -= 3;
 			position.y -= 2;
@@ -87,6 +89,8 @@ Update_Status ModuleFrisbee::Update()
 		App->player->position.y = 100;
 		App->player2->position.x = 259;
 		App->player2->position.y = 100;
+		App->player->currentAnimation = &App->player->idleRAnim;
+		App->player2->currentAnimation = &App->player2->idleLAnim;
 		if (position.x != App->player2->position.x || position.y != App->player2->position.y) {
 			position.x += 3;
 			position.y -= 2;

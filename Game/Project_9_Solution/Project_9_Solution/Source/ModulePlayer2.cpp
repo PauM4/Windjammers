@@ -213,10 +213,6 @@ Update_Status ModulePlayer2::Update()
 			&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1 && !disco)
 			currentAnimation = &idleRAnim;
 
-		//Al recibir disco hace idle con disco en la mano
-		if (last2 != 2 && disco) {
-			currentAnimation = &idleDisk;
-		}
 
 		//LANZAMIENTO DE DISCO NORMAL
 		for (int i = 0; i < 1; i++) {
@@ -324,4 +320,6 @@ void ModulePlayer2::frisbeeCollision() {
 	App->frisbee->position.x = position.x - 17;
 	App->frisbee->position.y = position.y;
 	App->frisbee->posesion = true;
+	//Al recibir disco hace idle con disco en la mano
+	currentAnimation = &idleDisk;
 }

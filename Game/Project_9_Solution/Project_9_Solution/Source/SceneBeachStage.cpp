@@ -92,6 +92,7 @@ Update_Status SceneBeachStage::Update()
 	else if (initialTime == 240)
 	{
 		startTheGame = true;
+		//EndRound(1);
 	}
 
 	if (startTheGame)
