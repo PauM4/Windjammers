@@ -8,6 +8,7 @@
 struct SDL_Texture;
 
 //Enum with all maps
+//Quan tinguem altres mapes, es fara servir
 enum MapList
 {
 	Beach,

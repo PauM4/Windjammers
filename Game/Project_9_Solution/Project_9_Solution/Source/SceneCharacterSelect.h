@@ -6,6 +6,17 @@
 
 struct SDL_Texture;
 
+//Quan tinguem més personatges, es fara servir
+enum CharList
+{
+	Mita,
+	Yoo,
+	Costa,
+	Biaggi,
+	Scott,
+	Wessel
+};
+
 class SceneCharacterSelect : public Module
 {
 public:
@@ -30,10 +41,23 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* uiSpriteSheet = nullptr;
+
+	// 1p, 2p sprite positions
+
+	// Rects de 1p, 2p
+	SDL_Rect p1Rect;
+	SDL_Rect p2Rect;
+
 
 	// Sound effects indices
-	uint selectFx = 0;
+	uint moveFx = 0;
 	uint hiromiSelected = 0;
+
+	///Coordinates
+	int x1, y1;
+	int x2, y2;
+
 
 };
 
