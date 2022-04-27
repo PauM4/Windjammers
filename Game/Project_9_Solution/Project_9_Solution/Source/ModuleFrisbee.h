@@ -57,7 +57,7 @@ public:
 	// A set of animations
 	Animation moving;
 	Animation projectile;
-
+	Animation desaparece;
 
 	// The player's collider
 	Collider* collider = nullptr;

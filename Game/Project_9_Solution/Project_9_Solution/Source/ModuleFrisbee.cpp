@@ -35,6 +35,9 @@ ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 	projectile.loop = false;
 	projectile.speed = 0.1f;
 
+	//Desaparece
+	
+
 }
 
 ModuleFrisbee::~ModuleFrisbee()
@@ -217,6 +220,7 @@ void ModuleFrisbee::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && destroyed == false)
 	{
 		arbitro = 0;
+		currentAnimation2 = &desaparece;
 
 	}
 }
