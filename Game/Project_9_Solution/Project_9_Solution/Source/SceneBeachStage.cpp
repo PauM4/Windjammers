@@ -149,8 +149,6 @@ bool SceneBeachStage::CleanUp()
 	App->player2->Disable();
 	App->frisbee->Disable();
 
-	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
-
 	return true;
 }
 

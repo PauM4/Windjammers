@@ -130,7 +130,6 @@ bool ModulePlayer2::Start()
 	position.x = 259;
 	position.y = 100;
 
-	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
@@ -209,7 +208,7 @@ Update_Status ModulePlayer2::Update()
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1 && !disco)
 		currentAnimation = &idleRAnim;
 
-	//Al recibir disco de espaldas vuelve a su idle
+	//Al recibir disco hace idle con disco en la mano
 	if (last2 != 2 && disco) {
 		currentAnimation = &idleDisk;
 	}
@@ -293,7 +292,6 @@ Update_Status ModulePlayer2::PostUpdate()
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%2d", score);
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(163, 16, scoreFont, scoreText);
 
 	//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
