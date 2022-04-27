@@ -7,6 +7,17 @@
 
 struct SDL_Texture;
 
+//Enum with all maps
+enum MapList
+{
+	Beach,
+	Lawn,
+	Tiled,
+	Concrete,
+	Clay,
+	Stadium
+};
+
 class SceneStageSelect : public Module
 {
 public:
@@ -30,11 +41,25 @@ public:
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
-	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* bgStageTexture = nullptr;
+	SDL_Texture* stageNamesTexture = nullptr;
+	SDL_Texture* selectSquareTexture = nullptr;
+
+	SDL_Texture* miniClayTexture = nullptr;
+	SDL_Texture* miniConcreteTexture = nullptr;
+	SDL_Texture* miniLawnTexture = nullptr;
+	SDL_Texture* miniStadiumTexture = nullptr;
+	SDL_Texture* miniTiledTexture = nullptr;
+	SDL_Texture* miniBeachTexture = nullptr;
+
+	SDL_Rect selectSquare;
 
 	// Sound effects indices
 	uint selectFx = 0;
+	uint moveFx = 0;
 
+	//Coordinates
+	int yMove, x1, x2, x3, x4, x5, x6;
 };
 
 #endif
