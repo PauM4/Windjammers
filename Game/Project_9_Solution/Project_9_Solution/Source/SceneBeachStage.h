@@ -50,7 +50,6 @@ public:
 
 	void EndRound(int arbitro);
 	void ScoreRound(int arbitro);
-	void ScoreSet();
 	void Win();
 	bool suddenDeath = false;
 

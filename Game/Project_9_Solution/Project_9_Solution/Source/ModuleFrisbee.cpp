@@ -154,7 +154,7 @@ Update_Status ModuleFrisbee::Update()
 				App->player2->score += 5;
 				//arbitro = 1;
 				if (App->sceneBeachStage->suddenDeath) {
-					App->sceneBeachStage->ScoreSet();
+					App->sceneBeachStage->Win();
 				}
 				App->sceneBeachStage->ScoreRound(1);
 				//App->sceneBeachStage->EndRound(1);
@@ -164,7 +164,7 @@ Update_Status ModuleFrisbee::Update()
 				App->player2->score += 3;
 				//arbitro = 1;
 				if (App->sceneBeachStage->suddenDeath) {
-					App->sceneBeachStage->ScoreSet();
+					App->sceneBeachStage->Win();
 				}
 				App->sceneBeachStage->ScoreRound(1);
 				//App->sceneBeachStage->EndRound(1);
@@ -175,7 +175,7 @@ Update_Status ModuleFrisbee::Update()
 				App->player->score += 5;
 				//arbitro = 2;
 				if (App->sceneBeachStage->suddenDeath) {
-					App->sceneBeachStage->ScoreSet();
+					App->sceneBeachStage->Win();
 				}
 				
 				App->sceneBeachStage->ScoreRound(2);
@@ -185,7 +185,7 @@ Update_Status ModuleFrisbee::Update()
 				App->player->score += 3;
 				//arbitro = 2;
 				if (App->sceneBeachStage->suddenDeath) {
-					App->sceneBeachStage->ScoreSet();
+					App->sceneBeachStage->Win();
 				}
 				App->sceneBeachStage->ScoreRound(2);
 				//App->sceneBeachStage->EndRound(2);
