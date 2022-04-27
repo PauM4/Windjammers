@@ -22,7 +22,7 @@ SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 		timerAnim.PushBack({ posX, 0, 15, 15 });
 		posX += 15;
 	}
-	timerAnim.loop = false;
+	timerAnim.loop = true;
 	timerAnim.pingpong = false;
 	timerAnim.speed = 0.017f;
 
@@ -215,13 +215,13 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 
 
 	}
-	else if (App->player->score == App->player2->score && timerAnim.HasFinished()){
+	/*else if (App->player->score == App->player2->score && timerAnim.HasFinished()){
 		App->player->round += 1;
 		App->player2->round += 1;
 		App->player->score = 0;
 		App->player2->score = 0;
 		EndRound(1);
-	}
+	}*/
 	else  { //puntuaciones empates
 		EndRound(arbitro);
 	}
