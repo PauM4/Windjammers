@@ -44,6 +44,8 @@ public:
 	Animation* currentBeachAnim = nullptr;
 
 	// Sound effects indices
+	uint round1FX = 0;
+
 	//uint winFx = 0;
 
 	void EndRound(int arbitro);

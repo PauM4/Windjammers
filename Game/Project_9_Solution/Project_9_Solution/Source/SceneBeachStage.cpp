@@ -49,6 +49,9 @@ bool SceneBeachStage::Start()
 	bool ret = true;
 
 	//FX de rounds
+	round1FX = App->audio->LoadFx("Assets/Fx/round1.wav");
+
+
 	//beachTexture = App->textures->Load("Assets/Sprites/Levels/PH_Beach.png");
 	bgBeachTexture = App->textures->Load("Assets/Sprites/Levels/bgBeachSpriteSheet.png");
 	currentBeachAnim = &bgBeachAnim;
@@ -93,6 +96,9 @@ Update_Status SceneBeachStage::Update()
 		App->audio->PlayMusic("Assets/Music/silenceAudio.ogg");
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
+
+	//ERROR Se ejecuta el audio todo el rato, debe de haber una manera de que se ejecute con una tecla para pasar de ronda
+	//App->audio->PlayFx(round1FX);
 
 	ScoreRound(0);
 

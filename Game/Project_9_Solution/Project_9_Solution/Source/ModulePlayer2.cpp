@@ -114,6 +114,9 @@ bool ModulePlayer2::Start()
 	texture = App->textures->Load("Assets/Sprites/Characters/Jap2.png");
 	currentAnimation = &idleLAnim;
 
+	//SFX
+	tossFx = App->audio->LoadFx("Assets/Fx/Toss.wav");
+	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 
 	position.x = 259;
 	position.y = 100;
@@ -255,6 +258,12 @@ Update_Status ModulePlayer2::Update()
 			App->audio->PlayFx(laserFx);
 			break;
 		}
+	}
+
+	//SFX
+	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN)
+	{
+		App->audio->PlayFx(tossFx);
 	}
 
 	collider->SetPos(position.x, position.y);
