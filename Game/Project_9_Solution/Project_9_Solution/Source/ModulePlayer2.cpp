@@ -222,6 +222,7 @@ Update_Status ModulePlayer2::Update()
 			disco = false;
 			App->frisbee->posesion = false;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
 		}
 
@@ -232,6 +233,7 @@ Update_Status ModulePlayer2::Update()
 			disco = false;
 			App->frisbee->posesion = false;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
 
 		}
@@ -242,6 +244,7 @@ Update_Status ModulePlayer2::Update()
 			disco = false;
 			App->frisbee->posesion = false;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
 		}
 	}
@@ -270,12 +273,6 @@ Update_Status ModulePlayer2::Update()
 			App->audio->PlayFx(lobFx);
 			break;
 		}
-	}
-
-	//SFX
-	if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN)
-	{
-		App->audio->PlayFx(tossFx);
 	}
 
 	collider->SetPos(position.x, position.y);

@@ -125,6 +125,7 @@ bool ModulePlayer::Start()
 
 	//SFX
 	tossFx = App->audio->LoadFx("Assets/Fx/Toss.wav");
+	lobFx = App->audio->LoadFx("Assets/Fx/Lob.wav");
 
 	position.x = 20;
 	position.y = 100;
@@ -221,6 +222,7 @@ Update_Status ModulePlayer::Update()
 			disco = false;
 			App->frisbee->posesion = true;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
 		}
 
@@ -231,6 +233,7 @@ Update_Status ModulePlayer::Update()
 			disco = false;
 			App->frisbee->posesion = true;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
 
 		}
@@ -242,7 +245,9 @@ Update_Status ModulePlayer::Update()
 			disco = false;
 			App->frisbee->posesion = true;
 			App->frisbee->currentAnimation2 = &App->frisbee->moving;
+			App->audio->PlayFx(tossFx);
 			break;
+
 		}
 
 	}
@@ -252,7 +257,7 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
 		{
 			App->particles->AddParticle(2.5, -1, App->particles->frisbeeProjectile, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 		}
 
@@ -260,7 +265,7 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco)
 		{
 			App->particles->AddParticle(2.5, 1, App->particles->frisbeeProjectile, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 
 		}
@@ -268,15 +273,9 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && disco)
 		{
 			App->particles->AddParticle(2.5, 0, App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 		}
-	}
-
-	//SFX
-	if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN)
-	{
-		App->audio->PlayFx(tossFx);
 	}
 
 	collider->SetPos(position.x, position.y);
