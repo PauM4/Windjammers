@@ -50,12 +50,14 @@ public:
 
 	void EndRound(int arbitro);
 	void ScoreRound(int arbitro);
+	void ScoreSet();
 	void Win();
 	bool suddenDeath = false;
 
 	int time = 0;
-	
-	
+
+	int initialTime;
+	bool startTheGame;
 };
 
 #endif

@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleFrisbee.h"
+#include "SceneBeachStage.h"
 
 #include <stdio.h>
 
@@ -130,6 +131,7 @@ bool ModulePlayer::Start()
 	position.x = 20;
 	position.y = 100;
 
+	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
@@ -143,141 +145,145 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 	//MOVIMIENTO
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && !disco)
+	if (App->sceneBeachStage->startTheGame)
 	{
-		position.x -= speed;
-
-		if (currentAnimation != &leftAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && !disco)
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
+			position.x -= speed;
+
+			if (currentAnimation != &leftAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
+			{
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
+			last1 = 0;
 		}
-		last1 = 0;
+
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && !disco)
+		{
+			position.x += speed;
+			if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+			last1 = 1;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && !disco)
+		{
+			position.y += speed;
+			if (currentAnimation != &downLAnim && last1 == 0)
+			{
+				downLAnim.Reset();
+				currentAnimation = &downLAnim;
+			}
+			if (currentAnimation != &downRAnim && last1 == 1)
+			{
+				downLAnim.Reset();
+				currentAnimation = &downRAnim;
+			}
+		}
+
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && !disco)
+		{
+			position.y -= speed;
+			if (currentAnimation != &upLAnim && last1 == 0)
+			{
+				upLAnim.Reset();
+				currentAnimation = &upLAnim;
+			}
+			if (currentAnimation != &upRAnim && last1 == 1)
+			{
+				upRAnim.Reset();
+				currentAnimation = &upRAnim;
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 0 && !disco)
+			currentAnimation = &idleLAnim;
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 1 && !disco)
+			currentAnimation = &idleRAnim;
+
+		//Al recibir disco hace idle con disco en la mano
+		if (last1 != 2 && disco) {
+			currentAnimation = &idleDisk;
+		}
+
+		//LANZAMIENTO DE DISCO NORMAL
+		for (int i = 0; i < 1; i++) {
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
+			{
+				App->frisbee->mov = 1;
+				disco = false;
+				App->frisbee->posesion = true;
+				App->frisbee->currentAnimation2 = &App->frisbee->moving;
+				App->audio->PlayFx(tossFx);
+				break;
+			}
+
+
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
+			{
+				App->frisbee->mov = 3;
+				disco = false;
+				App->frisbee->posesion = true;
+				App->frisbee->currentAnimation2 = &App->frisbee->moving;
+				App->audio->PlayFx(tossFx);
+				break;
+
+			}
+
+
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == false)
+			{
+				App->frisbee->mov = 2;
+				disco = false;
+				App->frisbee->posesion = true;
+				App->frisbee->currentAnimation2 = &App->frisbee->moving;
+				App->audio->PlayFx(tossFx);
+				break;
+
+			}
+
+		}
+
+		//LANZAMIENTO DE DISCO PARÁBOLA
+		for (int i = 0; i < 1; i++) {
+			if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
+			{
+				App->particles->AddParticle(2.5, -1, App->particles->frisbeeProjectile, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(lobFx);
+				break;
+			}
+
+
+			if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco)
+			{
+				App->particles->AddParticle(2.5, 1, App->particles->frisbeeProjectile, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(lobFx);
+				break;
+
+			}
+
+			if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && disco)
+			{
+				App->particles->AddParticle(2.5, 0, App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(lobFx);
+				break;
+			}
+		}
+
+		collider->SetPos(position.x, position.y);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && !disco)
-	{
-		position.x += speed;
-		if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
-		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
-		}
-		last1 = 1;
-	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && !disco)
-	{
-		position.y += speed;
-		if (currentAnimation != &downLAnim && last1 == 0)
-		{
-			downLAnim.Reset();
-			currentAnimation = &downLAnim;
-		}
-		if (currentAnimation != &downRAnim && last1 == 1)
-		{
-			downLAnim.Reset();
-			currentAnimation = &downRAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && !disco)
-	{
-		position.y -= speed;
-		if (currentAnimation != &upLAnim && last1 == 0)
-		{
-			upLAnim.Reset();
-			currentAnimation = &upLAnim;
-		}
-		if (currentAnimation != &upRAnim && last1 == 1)
-		{
-			upRAnim.Reset();
-			currentAnimation = &upRAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 0 && !disco)
-		currentAnimation = &idleLAnim;
-
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 1 && !disco)
-		currentAnimation = &idleRAnim;
-
-	//Al recibir disco hace idle con disco en la mano
-	if (last1 != 2 && disco) {
-		currentAnimation = &idleDisk;
-	}
-
-	//LANZAMIENTO DE DISCO NORMAL
-	for (int i = 0; i < 1; i++) {
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
-		{
-			App->frisbee->mov = 1;
-			disco = false;
-			App->frisbee->posesion = true;
-			App->frisbee->currentAnimation2 = &App->frisbee->moving;
-			App->audio->PlayFx(tossFx);
-			break;
-		}
-
-
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
-		{
-			App->frisbee->mov = 3;
-			disco = false;
-			App->frisbee->posesion = true;
-			App->frisbee->currentAnimation2 = &App->frisbee->moving;
-			App->audio->PlayFx(tossFx);
-			break;
-
-		}
-
-
-		if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == false)
-		{
-			App->frisbee->mov = 2;
-			disco = false;
-			App->frisbee->posesion = true;
-			App->frisbee->currentAnimation2 = &App->frisbee->moving;
-			App->audio->PlayFx(tossFx);
-			break;
-
-		}
-
-	}
-
-	//LANZAMIENTO DE DISCO PARÁBOLA
-	for (int i = 0; i < 1; i++) {
-		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco)
-		{
-			App->particles->AddParticle(2.5, -1, App->particles->frisbeeProjectile, position.x + 20, position.y - 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(lobFx);
-			break;
-		}
-
-
-		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco)
-		{
-			App->particles->AddParticle(2.5, 1, App->particles->frisbeeProjectile, position.x + 20, position.y + 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(lobFx);
-			break;
-
-		}
-
-		if (App->input->keys[SDL_SCANCODE_Z] == Key_State::KEY_DOWN && disco)
-		{
-			App->particles->AddParticle(2.5, 0, App->particles->frisbeeProjectile, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(lobFx);
-			break;
-		}
-	}
-
-	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
 
@@ -294,7 +300,9 @@ Update_Status ModulePlayer::PostUpdate()
 
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%2d", score);
-	
+
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(115, 16, scoreFont, scoreText);
 
 	//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
