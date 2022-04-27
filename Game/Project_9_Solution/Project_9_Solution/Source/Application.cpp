@@ -35,11 +35,7 @@ Application::Application()
 	modules[4] = sceneIntro = new SceneIntro(true);
 	modules[5] = sceneTitle = new SceneTitle(false);
 	modules[6] = sceneCharacterSelect = new SceneCharacterSelect(false);
-<<<<<<< Updated upstream
 	modules[7] = sceneStageSelect = new SceneStageSelect(false);
-=======
-	modules[7] = sceneStageSelect = new SceneStageSelect(true);
->>>>>>> Stashed changes
 	modules[8] = sceneCharacterPresent = new SceneCharacterPresent(false);
 	modules[9] = sceneBeachStage = new SceneBeachStage(false);
 
