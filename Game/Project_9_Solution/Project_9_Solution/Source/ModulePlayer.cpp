@@ -15,19 +15,31 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	// idle right animation
-	idleAnim.PushBack({ 393, 103, 23, 36 });
-	idleAnim.PushBack({ 370, 103, 23, 35 });
-	idleAnim.PushBack({ 347, 103, 23, 36 });
-	idleAnim.PushBack({ 323, 103, 24, 36 });
-	idleAnim.PushBack({ 299, 103, 24, 35 });
-	idleAnim.PushBack({ 275, 103, 24, 36 });
-	idleAnim.PushBack({ 251, 103, 23, 39 });
-	idleAnim.PushBack({ 227, 103, 23, 37 });
-	idleAnim.loop = true;
-	idleAnim.speed = 0.1f;
+	// Idle Left Animation
+	idleLAnim.PushBack({ 393, 359, 23, 36 });
+	idleLAnim.PushBack({ 370, 359, 23, 35 });
+	idleLAnim.PushBack({ 347, 359, 23, 36 });
+	idleLAnim.PushBack({ 323, 359, 24, 36 });
+	idleLAnim.PushBack({ 299, 359, 24, 35 });
+	idleLAnim.PushBack({ 275, 359, 24, 36 });
+	idleLAnim.PushBack({ 251, 359, 23, 39 });
+	idleLAnim.PushBack({ 227, 359, 23, 37 });
+	idleLAnim.loop = true;
+	idleLAnim.speed = 0.1f;
 
-	// move right
+	// Idle Right Animation
+	idleRAnim.PushBack({ 393, 103, 23, 36 });
+	idleRAnim.PushBack({ 370, 103, 23, 35 });
+	idleRAnim.PushBack({ 347, 103, 23, 36 });
+	idleRAnim.PushBack({ 323, 103, 24, 36 });
+	idleRAnim.PushBack({ 299, 103, 24, 35 });
+	idleRAnim.PushBack({ 275, 103, 24, 36 });
+	idleRAnim.PushBack({ 251, 103, 23, 39 });
+	idleRAnim.PushBack({ 227, 103, 23, 37 });
+	idleRAnim.loop = true;
+	idleRAnim.speed = 0.1f;
+
+	// Move Right
 	rightAnim.PushBack({ 454, 148, 45, 32 });
 	rightAnim.PushBack({ 426, 148, 28, 33 });
 	rightAnim.PushBack({ 385, 148, 41, 36 });
@@ -37,25 +49,45 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 
-	// Move down
-	downAnim.PushBack({ 240, 148, 29, 43 });
-	downAnim.PushBack({ 208, 148, 32, 38 });
-	downAnim.PushBack({ 179, 148, 29, 35 });
-	downAnim.PushBack({ 155, 148, 24, 41 });
-	downAnim.PushBack({ 125, 148, 30, 38 });
-	downAnim.PushBack({ 94, 148, 31, 34 });
-	downAnim.loop = true;
-	downAnim.speed = 0.1f;
+	// Move Down Head Left
+	downLAnim.PushBack({ 240, 404, 29, 43 });
+	downLAnim.PushBack({ 208, 404, 32, 38 });
+	downLAnim.PushBack({ 179, 404, 29, 35 });
+	downLAnim.PushBack({ 155, 404, 24, 41 });
+	downLAnim.PushBack({ 125, 404, 30, 38 });
+	downLAnim.PushBack({ 94, 404, 31, 34 });
+	downLAnim.loop = true;
+	downLAnim.speed = 0.1f;
 
-	//Move Up
-	upAnim.PushBack({ 150, 191, 30, 40 });
-	upAnim.PushBack({ 120, 191, 30, 51 });
-	upAnim.PushBack({ 90, 191, 30, 50 });
-	upAnim.PushBack({ 60, 191, 30, 40 });
-	upAnim.PushBack({ 30, 191, 30, 53 });
-	upAnim.PushBack({ 0, 191, 30, 50 });
-	upAnim.loop = true;
-	upAnim.speed = 0.1f;
+	// Move Down Head Right
+	downRAnim.PushBack({ 240, 148, 29, 43 });
+	downRAnim.PushBack({ 208, 148, 32, 38 });
+	downRAnim.PushBack({ 179, 148, 29, 35 });
+	downRAnim.PushBack({ 155, 148, 24, 41 });
+	downRAnim.PushBack({ 125, 148, 30, 38 });
+	downRAnim.PushBack({ 94, 148, 31, 34 });
+	downRAnim.loop = true;
+	downRAnim.speed = 0.1f;
+
+	//Move Up Head Left
+	upLAnim.PushBack({ 150, 447, 30, 40 });
+	upLAnim.PushBack({ 120, 447, 30, 51 });
+	upLAnim.PushBack({ 90, 447, 30, 50 });
+	upLAnim.PushBack({ 60, 447, 30, 40 });
+	upLAnim.PushBack({ 30, 447, 30, 53 });
+	upLAnim.PushBack({ 0, 447, 30, 50 });
+	upLAnim.loop = true;
+	upLAnim.speed = 0.1f;
+
+	//Move Up Head Right
+	upRAnim.PushBack({ 150, 191, 30, 40 });
+	upRAnim.PushBack({ 120, 191, 30, 51 });
+	upRAnim.PushBack({ 90, 191, 30, 50 });
+	upRAnim.PushBack({ 60, 191, 30, 40 });
+	upRAnim.PushBack({ 30, 191, 30, 53 });
+	upRAnim.PushBack({ 0, 191, 30, 50 });
+	upRAnim.loop = true;
+	upRAnim.speed = 0.1f;
 
 	//Move Left
 	leftAnim.PushBack({ 455, 404, 45, 32 });
@@ -66,7 +98,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 270, 404, 40, 35 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -81,7 +112,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Sprites/Characters/Jap.png");
-	currentAnimation = &idleAnim;
+	currentAnimation = &idleRAnim;
 
 	//SFX
 	tossFx = App->audio->LoadFx("Assets/Fx/Toss.wav");
@@ -112,6 +143,7 @@ Update_Status ModulePlayer::Update()
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
+		last1 = 0;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && !disco)
@@ -122,33 +154,55 @@ Update_Status ModulePlayer::Update()
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
+		last1 = 1;
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && !disco)
 	{
 		position.y += speed;
-		if (currentAnimation != &downAnim)
+		if (currentAnimation != &downLAnim && last1 == 0)
 		{
-			downAnim.Reset();
-			currentAnimation = &downAnim;
+			downLAnim.Reset();
+			currentAnimation = &downLAnim;
+		}
+		if (currentAnimation != &downRAnim && last1 == 1)
+		{
+			downLAnim.Reset();
+			currentAnimation = &downRAnim;
 		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && !disco)
 	{
 		position.y -= speed;
-		if (currentAnimation != &upAnim)
+		if (currentAnimation != &upLAnim && last1 == 0)
 		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
+			upLAnim.Reset();
+			currentAnimation = &upLAnim;
+		}
+		if (currentAnimation != &upRAnim && last1 == 1)
+		{
+			upRAnim.Reset();
+			currentAnimation = &upRAnim;
 		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE)
-		currentAnimation = &idleAnim;
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 0)
+		currentAnimation = &idleLAnim;
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 1)
+		currentAnimation = &idleRAnim;
+
+	//Al recibir disco de espaldas vuelve a su idle
+	if (last1 == 0 && disco) {
+		currentAnimation = &idleRAnim;
+	}
 
 	//LANZAMIENTO DE DISCO NORMAL
 	for (int i = 0; i < 1; i++) {

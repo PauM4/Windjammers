@@ -200,7 +200,7 @@ Update_Status ModulePlayer2::Update()
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1)
 		currentAnimation = &idleRAnim;
 
-	//Al recibir disco vuelve a su idle
+	//Al recibir disco de espaldas vuelve a su idle
 	if (last2 == 1 && disco) {
 		currentAnimation = &idleLAnim;
 	}
