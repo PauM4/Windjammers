@@ -81,6 +81,7 @@ Update_Status SceneStageSelect::Update()
 			yMove = 127;
 			x3 = -200;
 			x4 = 24;
+			App->audio->PlayFx(moveFx);
 		}
 		else if (yMove == 127)
 		{
@@ -88,6 +89,7 @@ Update_Status SceneStageSelect::Update()
 			yMove = 151;
 			x4 = -200;
 			x5 = 24;
+			App->audio->PlayFx(moveFx);
 		}
 		else if (yMove == 151)
 		{
@@ -95,12 +97,14 @@ Update_Status SceneStageSelect::Update()
 			yMove = 175;
 			x5 = -200;
 			x6 = 24;
+			App->audio->PlayFx(moveFx);
 		}
 		else if (yMove == 175)
 		{
 			MapList::Stadium;
 			yMove = 175;
 			x6 = 24;
+			App->audio->PlayFx(moveFx);
 		}
 	}
 
