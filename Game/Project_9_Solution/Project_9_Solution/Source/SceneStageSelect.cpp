@@ -104,7 +104,7 @@ Update_Status SceneStageSelect::Update()
 			MapList::Stadium;
 			yMove = 175;
 			x6 = 24;
-			App->audio->PlayFx(moveFx);
+			//App->audio->PlayFx(moveFx);
 		}
 	}
 
