@@ -52,6 +52,7 @@ public:
 	// A set of animations
 	Animation idleRAnim;
 	Animation idleLAnim;
+	Animation idleDisk;
 	Animation upLAnim;
 	Animation upRAnim;
 	Animation downLAnim;

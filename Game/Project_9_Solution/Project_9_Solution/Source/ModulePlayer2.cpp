@@ -98,6 +98,15 @@ ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 270, 404, 40, 35 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
+
+	//Idle Disk
+	idleDisk.PushBack({ 0, 512, 47, 48 });
+	idleDisk.PushBack({ 48, 512, 47, 48 });
+	idleDisk.PushBack({ 96, 512, 47, 48 });
+	idleDisk.PushBack({ 144, 512, 47, 48 });
+	idleDisk.PushBack({ 192, 512, 47, 48 });
+	idleDisk.loop = true;
+	idleDisk.speed = 0.1f;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -191,18 +200,18 @@ Update_Status ModulePlayer2::Update()
 	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 0)
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 0 && !disco)
 		currentAnimation = &idleLAnim;
 
 	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1)
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_IDLE && last2 == 1 && !disco)
 		currentAnimation = &idleRAnim;
 
 	//Al recibir disco de espaldas vuelve a su idle
-	if (last2 == 1 && disco) {
-		currentAnimation = &idleLAnim;
+	if (last2 != 2 && disco) {
+		currentAnimation = &idleDisk;
 	}
 
 	//LANZAMIENTO DE DISCO NORMAL
