@@ -116,7 +116,7 @@ bool ModulePlayer2::Start()
 
 	//SFX
 	tossFx = App->audio->LoadFx("Assets/Fx/Toss.wav");
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
+	lobFx = App->audio->LoadFx("Assets/Fx/Lob.wav");
 
 	position.x = 259;
 	position.y = 100;
@@ -239,7 +239,7 @@ Update_Status ModulePlayer2::Update()
 		if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco)
 		{
 			App->particles->AddParticle(-2.5, -1, App->particles->frisbeeProjectile, position.x - 20, position.y - 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 		}
 
@@ -247,7 +247,7 @@ Update_Status ModulePlayer2::Update()
 		if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && disco)
 		{
 			App->particles->AddParticle(-2.5, 1, App->particles->frisbeeProjectile, position.x - 20, position.y + 20, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 
 		}
@@ -255,7 +255,7 @@ Update_Status ModulePlayer2::Update()
 		if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
 		{
 			App->particles->AddParticle(-2.5, 0, App->particles->frisbeeProjectile, position.x - 20, position.y, Collider::Type::PLAYER_SHOT);
-			App->audio->PlayFx(laserFx);
+			App->audio->PlayFx(lobFx);
 			break;
 		}
 	}
