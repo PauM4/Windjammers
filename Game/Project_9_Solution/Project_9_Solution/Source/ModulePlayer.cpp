@@ -131,7 +131,6 @@ bool ModulePlayer::Start()
 	position.x = 20;
 	position.y = 100;
 
-	// TODO 4: Retrieve the player when playing a second time
 	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
@@ -144,9 +143,9 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
-	//MOVIMIENTO
 	if (App->sceneBeachStage->startTheGame)
 	{
+		//MOVIMIENTO
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && !disco)
 		{
 			position.x -= speed;
@@ -199,6 +198,7 @@ Update_Status ModulePlayer::Update()
 				currentAnimation = &upRAnim;
 			}
 		}
+
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
@@ -283,7 +283,7 @@ Update_Status ModulePlayer::Update()
 		collider->SetPos(position.x, position.y);
 	}
 
-
+	
 
 	currentAnimation->Update();
 
@@ -300,9 +300,7 @@ Update_Status ModulePlayer::PostUpdate()
 
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%2d", score);
-
-
-	// TODO 3: Blit the text of the score in at the bottom of the screen
+	
 	App->fonts->BlitText(115, 16, scoreFont, scoreText);
 
 	//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");

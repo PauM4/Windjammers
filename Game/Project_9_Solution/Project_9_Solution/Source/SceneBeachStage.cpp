@@ -45,13 +45,15 @@ SceneBeachStage::~SceneBeachStage()
 // Load assets
 bool SceneBeachStage::Start()
 {
-
-	initialTime = 0;
-	startTheGame = false;
+	
+	
 
 	LOG("Loading background assets");
 
 	bool ret = true;
+
+	initialTime = 0;
+	startTheGame = false;
 
 	//FX de rounds
 	round1FX = App->audio->LoadFx("Assets/Fx/round1.wav");
@@ -62,7 +64,7 @@ bool SceneBeachStage::Start()
 	currentBeachAnim = &bgBeachAnim;
 
 	App->audio->PlayMusic("Assets/Music/03_Flying Power Disc (Beach Court).ogg", 1.0f);
-
+	
 	// Load timer texture
 	timerTexture = App->textures->Load("Assets/Sprites/UI/Fonts/timerSpriteSheet.png");
 	currentTimerAnim = &timerAnim;
@@ -131,6 +133,7 @@ Update_Status SceneBeachStage::Update()
 // Update: draw background
 Update_Status SceneBeachStage::PostUpdate()
 {
+
 	// Draw everything --------------------------------------
 	//App->render->Blit(beachTexture, 0, 0, NULL);
 	//Beach background
@@ -162,7 +165,9 @@ Update_Status SceneBeachStage::PostUpdate()
 	App->render->Blit(uiSpriteTexture, 40, 10, &japanFlagRect);
 	App->render->Blit(uiSpriteTexture, 230, 10, &japanFlagRect);
 
-
+	//Timer
+	SDL_Rect rectTimer = currentTimerAnim->GetCurrentFrame();
+	App->render->Blit(timerTexture, 144, 13, &rectTimer);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -178,7 +183,7 @@ bool SceneBeachStage::CleanUp()
 
 //En cuanto mete un jugador un gol, se llama a esto y se determina el valor de arbitro. Lo ponemos aqui como funcion externa en vez de dentro del update de frisbee
 //Ya que en este .cpp también llamaremos a esta función en función de las rondas/sets ganados~
-void SceneBeachStage::EndRound(int arbitro) {
+void SceneBeachStage::EndRound(int arbitro) { 
 	if (arbitro == 1) {
 		App->frisbee->arbitro = 1;
 	}
@@ -196,20 +201,20 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 
 			if (App->player->score > App->player2->score + 2) {
 				App->player->round += 1;
-
-				ScoreSet();
+				
+				Win();
 				//Llamar animación de jugador ganador 1 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(2);
-
+				
 				timerAnim.Reset();
 			}
 
 			if (App->player2->score > App->player->score + 2) {
 				App->player2->round += 1;
-
-				ScoreSet();
+				
+				Win();
 				//Llamar animación de jugador ganador 2 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
@@ -217,31 +222,31 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				timerAnim.Reset();
 			}
 
-		}
+		} 
 		else if (time == 1860) {
-
-			if (App->player->score > App->player2->score) {
+			
+			 if (App->player->score > App->player2->score) {
 				App->player->round += 1;
-
-				ScoreSet();
+				
+				Win();
 				//Llamar animación de jugador ganador 1 y las texturas
-				App->player->score = 0;
+				App->player->score = 0; 
 				App->player2->score = 0;
 				EndRound(2);
 				timerAnim.Reset();
-
+				
 				time = 0;
-			}
+			} 
 			else if (App->player2->score > App->player->score) {
 				App->player2->round += 1;
-
-				ScoreSet();
+				
+				Win();
 				//Llamar animación de jugador ganador 2 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(1);
 				timerAnim.Reset();
-
+				
 				time = 0;
 			}
 		}
@@ -250,72 +255,60 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 		}
 
 	}
-	else if (App->player->score == App->player2->score && time >= 1860) {
+	else if (App->player->score == App->player2->score && time >=1860) {
 		App->player->round += 1;
 		App->player2->round += 1;
 		App->player->score = 0;
 		App->player2->score = 0;
-
+		
+		Win();
 		//Animación de cuando los dos acaban una ronda en puntuacion empate
 		timerAnim.Reset();
 		EndRound(1);
 		time = 0;
 	}
-	else { //puntuaciones empates
+	else  { //puntuaciones empates
 		EndRound(arbitro);
 	}
 }
 
-void SceneBeachStage::ScoreSet() {
-
-	if (App->player->round == App->player2->round && App->player->round == 2 && App->player2->round == 2) {
-		suddenDeath = true;
-		App->player->round = 0;
-		App->player2->round = 0;
-		EndRound(1);
-	}
-
-
-	if (App->player->score != 0 && suddenDeath) {
-		App->player->set += 1;
-		Win();
-	}
-	if (App->player2->score != 0 && suddenDeath) {
-		App->player2->set += 1;
-		Win();
-	}
-
-
-	if (App->player->round == 2) {
-		App->player->round = 0;
-		App->player->set += 1;
-		Win();
-		//Llamada de animación y texturas de que ha ganado el primer jugador dos rondas
-
-	}
-
-	if (App->player2->round == 2) {
-		App->player2->round = 0;
-		App->player2->set += 1;
-		Win();
-		//Llamada de animación y texturas de que ha ganado el segundo jugador dos rondas
-
-	}
-}
-
 void SceneBeachStage::Win() {
-	//Determinar el Ganador
 
-	if (App->player->set == 2) {
+	if (App->player->round == App->player2->round && App->player->round == 2 && App->player2->round ==2 && !suddenDeath) {
+		suddenDeath = true;
+		EndRound(1);
+	} 
+	
+	else if (App->player->score != 0 && suddenDeath) {
 		//llamar animación y texturas de que ha ganado el primer jugador la partida
 		//SDL Delay
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
-	if (App->player2->set == 2) {
+	
+	else if (App->player2->score != 0 && suddenDeath) {
 		//llamar animación y texturas de que ha ganado el segundo jugador la partida
 		//SDL Delay
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
+
+	else if (App->player->round == 2 && !suddenDeath) {
+		//llamar animación y texturas de que ha ganado el primer jugador la partida
+		//SDL Delay
+		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+	
+	}
+
+	else if (App->player2->round == 2&&!suddenDeath) {
+		//llamar animación y texturas de que ha ganado el segundo jugador la partida
+			//SDL Delay
+		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+
+	}
+
+	else if (suddenDeath && App->player->score == App->player2->score) {
+		App->player->round = 69;
+		//Animacion y texturas de que los dos han perdido
+		//SDL Delay
+		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+	}
 }
-
-

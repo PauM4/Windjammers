@@ -12,6 +12,9 @@
 #include "ModuleFrisbee.h"
 #include "SceneBeachStage.h"
 
+//Venga developer;)
+
+
 #include <stdio.h>
 
 ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
@@ -143,8 +146,7 @@ bool ModulePlayer2::Start()
 
 Update_Status ModulePlayer2::Update()
 {
-	if (App->sceneBeachStage->startTheGame)
-	{
+	if (App->sceneBeachStage->startTheGame) {
 		//MOVIMIENTO
 		if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && position.x > 159 && !disco)
 		{
@@ -279,7 +281,8 @@ Update_Status ModulePlayer2::Update()
 
 		collider->SetPos(position.x, position.y);
 	}
-
+		
+	
 
 	currentAnimation->Update();
 
