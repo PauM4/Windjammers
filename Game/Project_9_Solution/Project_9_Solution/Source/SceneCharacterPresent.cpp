@@ -30,6 +30,8 @@ SceneCharacterPresent::~SceneCharacterPresent()
 // Load assets
 bool SceneCharacterPresent::Start()
 {
+	timer = 0;
+	scape = false;
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -50,7 +52,20 @@ bool SceneCharacterPresent::Start()
 
 Update_Status SceneCharacterPresent::Update()
 {
+	//4s
+	if (timer < 240)
+	{
+		timer++;
+	}
+	else if (timer == 240)
+	{
+		scape = true;
+	}
 
+	if (scape)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 15);
+	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneBeachStage, 15);

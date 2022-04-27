@@ -40,8 +40,9 @@ public:
 
 	// Background animation
 	Animation bgEffectAnim;
-	
 
+	int timer;
+	bool scape;
 };
 
 #endif

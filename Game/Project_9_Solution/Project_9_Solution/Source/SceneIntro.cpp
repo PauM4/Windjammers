@@ -20,6 +20,8 @@ SceneIntro::~SceneIntro()
 // Load assets
 bool SceneIntro::Start()
 {
+	timer = 0;
+	scape = false;
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -35,6 +37,21 @@ bool SceneIntro::Start()
 
 Update_Status SceneIntro::Update()
 {
+	//10s
+	if (timer < 600)
+	{
+		timer++;
+	}
+	else if (timer == 600)
+	{
+		scape = true;
+	}
+
+
+	if (scape)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
