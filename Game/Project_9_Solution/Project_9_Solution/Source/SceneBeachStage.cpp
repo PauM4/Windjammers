@@ -22,7 +22,7 @@ SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 		timerAnim.PushBack({ posX, 0, 15, 15 });
 		posX += 15;
 	}
-	timerAnim.loop = true;
+	timerAnim.loop = false;
 	timerAnim.pingpong = false;
 	timerAnim.speed = 0.017f;
 
@@ -166,67 +166,66 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 			if (App->player->score > App->player2->score + 2) {
 				App->player->round += 1;
 				
-				ScoreSet();
+				ScoreSet();										
+				//Llamar animación de jugador ganador 1 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
-										
 				EndRound(2);
-				//Llamar animación de jugador ganador 1 y las texturas
-				//ANIMACION TIEMPO RENOVADA -----
+				timerAnim.Reset();
 			}
 
 			if (App->player2->score > App->player->score + 2) {
 				App->player2->round += 1;
 				
 				ScoreSet();
+				//Llamar animación de jugador ganador 2 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(1);
-				//Llamar animación de jugador ganador 2 y las texturas
-				//ANIMACION TIEMPO RENOVADA -----
+				timerAnim.Reset();
 			}
 
-		} else if (timerAnim.HasFinished()) {
-			if (App->player->score > App->player2->score) {
+		} 
+		else if (timerAnim.HasFinished()) {
+			
+			 if (App->player->score > App->player2->score) {
 				App->player->round += 1;
 				
 				ScoreSet();
+				//Llamar animación de jugador ganador 1 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(2);
-				//Llamar animación de jugador ganador 1 y las texturas
-				//ANIMACION TIEMPO RENOVADA -----
-			}
-
-			if (App->player2->score > App->player->score) {
+				timerAnim.Reset();
+			} 
+			else if (App->player2->score > App->player->score) {
 				App->player2->round += 1;
 				
 				ScoreSet();
+				//Llamar animación de jugador ganador 2 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(1);
-				//Llamar animación de jugador ganador 2 y las texturas
-				//ANIMACION TIEMPO RENOVADA -----
+				timerAnim.Reset();
 			}
 		}
 		else { //cuando la puntucion es diferente pero no se da nada de arriba, llamamos igualmente a la funcion que ahce que el arbitro manda de nuevo la bola 
 			EndRound(arbitro);
 		}
 
-
 	}
-	/*else if (App->player->score == App->player2->score && timerAnim.HasFinished()){
+	else if (App->player->score == App->player2->score && timerAnim.HasFinished()) {
 		App->player->round += 1;
 		App->player2->round += 1;
 		App->player->score = 0;
 		App->player2->score = 0;
+		//Animación de cuando los dos acaban una ronda en puntuacion empate
+		timerAnim.Reset();
 		EndRound(1);
-	}*/
+	}
 	else  { //puntuaciones empates
 		EndRound(arbitro);
 	}
-
-
 }
 
 void SceneBeachStage::ScoreSet() {

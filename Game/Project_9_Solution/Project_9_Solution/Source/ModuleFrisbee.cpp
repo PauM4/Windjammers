@@ -174,7 +174,7 @@ Update_Status ModuleFrisbee::Update()
 				if (App->sceneBeachStage->suddenDeath) {
 					App->sceneBeachStage->ScoreSet();
 				}
-				App->sceneBeachStage->timerAnim.Reset();
+				
 				App->sceneBeachStage->ScoreRound(2);
 				//App->sceneBeachStage->EndRound(2);
 			}
