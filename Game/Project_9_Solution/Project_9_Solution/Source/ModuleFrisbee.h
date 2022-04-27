@@ -65,7 +65,7 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
-	void movimiento(int mov);
+	//void movimiento(int mov);
 
 };
 

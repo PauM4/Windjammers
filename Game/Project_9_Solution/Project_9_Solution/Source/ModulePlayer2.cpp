@@ -221,6 +221,7 @@ Update_Status ModulePlayer2::Update()
 			App->frisbee->mov = 1;
 			disco = false;
 			App->frisbee->posesion = false;
+			App->frisbee->currentAnimation2 = &App->frisbee->moving;
 			break;
 		}
 
@@ -230,6 +231,7 @@ Update_Status ModulePlayer2::Update()
 			App->frisbee->mov = 3;
 			disco = false;
 			App->frisbee->posesion = false;
+			App->frisbee->currentAnimation2 = &App->frisbee->moving;
 			break;
 
 		}
@@ -239,6 +241,7 @@ Update_Status ModulePlayer2::Update()
 			App->frisbee->mov = 2;
 			disco = false;
 			App->frisbee->posesion = false;
+			App->frisbee->currentAnimation2 = &App->frisbee->moving;
 			break;
 		}
 	}
