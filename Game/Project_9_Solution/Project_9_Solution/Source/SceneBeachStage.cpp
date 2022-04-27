@@ -13,6 +13,7 @@
 
 #include "SDL/include/SDL.h"
 
+
 SceneBeachStage::SceneBeachStage(bool startEnabled) : Module(startEnabled)
 {
 	//Load animation Timer test
@@ -44,6 +45,9 @@ SceneBeachStage::~SceneBeachStage()
 // Load assets
 bool SceneBeachStage::Start()
 {
+	
+	
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -77,6 +81,11 @@ bool SceneBeachStage::Start()
 
 Update_Status SceneBeachStage::Update()
 {
+
+	if (time <= 1860) {
+		time++;
+	}
+	
 	currentTimerAnim->Update();
 	currentBeachAnim->Update();
 
@@ -171,6 +180,7 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(2);
+				
 				timerAnim.Reset();
 			}
 
@@ -186,7 +196,7 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 			}
 
 		} 
-		else if (timerAnim.HasFinished()) {
+		else if (time == 1860) {
 			
 			 if (App->player->score > App->player2->score) {
 				App->player->round += 1;
@@ -197,6 +207,8 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				App->player2->score = 0;
 				EndRound(2);
 				timerAnim.Reset();
+				
+				time = 0;
 			} 
 			else if (App->player2->score > App->player->score) {
 				App->player2->round += 1;
@@ -207,6 +219,8 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				App->player2->score = 0;
 				EndRound(1);
 				timerAnim.Reset();
+				
+				time = 0;
 			}
 		}
 		else { //cuando la puntucion es diferente pero no se da nada de arriba, llamamos igualmente a la funcion que ahce que el arbitro manda de nuevo la bola 
@@ -214,14 +228,16 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 		}
 
 	}
-	else if (App->player->score == App->player2->score && timerAnim.HasFinished()) {
+	else if (App->player->score == App->player2->score && time >=1860) {
 		App->player->round += 1;
 		App->player2->round += 1;
 		App->player->score = 0;
 		App->player2->score = 0;
+		
 		//Animación de cuando los dos acaban una ronda en puntuacion empate
 		timerAnim.Reset();
 		EndRound(1);
+		time = 0;
 	}
 	else  { //puntuaciones empates
 		EndRound(arbitro);

@@ -53,6 +53,9 @@ public:
 	void ScoreSet();
 	void Win();
 	bool suddenDeath = false;
+
+	int time = 0;
+	
 	
 };
 
