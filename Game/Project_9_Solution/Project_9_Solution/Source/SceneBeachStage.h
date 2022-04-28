@@ -57,6 +57,9 @@ public:
 	int initialTime;
 	bool startTheGame;
 
+	//int roundCounter;
+	
+
 	//All rects
 	SDL_Rect rectBeach;
 	SDL_Rect p1Rect;
@@ -70,6 +73,9 @@ public:
 	SDL_Rect tresPuntsR;
 	SDL_Rect cincPuntsR;
 	SDL_Rect set1Rect;
+	//SDL_Rect set2Rect;
+	//SDL_Rect setFinalRect;
+	//SDL_Rect setDeathRect;
 	SDL_Rect rectTimer88;
 
 };

@@ -58,6 +58,9 @@ bool SceneBeachStage::Start()
 	initialTime = 0;
 	startTheGame = false;
 
+	//1 pk a l'inici ja estem a ronda 1
+	//roundCounter = 1;
+
 	//FX de rounds
 	round1FX = App->audio->LoadFx("Assets/Fx/round1.wav");
 
@@ -140,7 +143,6 @@ Update_Status SceneBeachStage::Update()
 // Update: draw background
 Update_Status SceneBeachStage::PostUpdate()
 {
-
 	// Draw everything --------------------------------------
 	//App->render->Blit(beachTexture, 0, 0, NULL);
 	//Beach background
@@ -204,6 +206,23 @@ Update_Status SceneBeachStage::PostUpdate()
 
 	}
 
+	//switch (roundCounter)
+	//{
+	//case 2:
+	//	set2Rect = { 320, 300, 160, 56 };
+	//	App->render->Blit(uiSpriteTexture, 72, 80, &set2Rect);
+	//	break;
+	//case 3:
+	//	setFinalRect = { 0, 300, 160, 56 };
+	//	App->render->Blit(uiSpriteTexture, 72, 80, &setFinalRect);
+	//	break;
+	//case 4:
+	//	setDeathRect = {179, 258, 270, 42 };
+	//	App->render->Blit(uiSpriteTexture, 16, 92, &setDeathRect);
+	//default:
+	//	break;
+	//}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -241,6 +260,9 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				Win();
 
 				//Llamar animación de jugador ganador 1 y las texturas
+				/*roundCounter++;*/
+
+				if(time == 18)
 
 				App->player->score = 0;
 				App->player2->score = 0;
@@ -254,6 +276,8 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 
 				Win();
 				//Llamar animación de jugador ganador 2 y las texturas
+				/*roundCounter++;*/
+
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(1);
@@ -268,6 +292,8 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 
 				Win();
 				//Llamar animación de jugador ganador 1 y las texturas
+				/*roundCounter++;*/
+
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(2);
@@ -280,6 +306,8 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 
 				Win();
 				//Llamar animación de jugador ganador 2 y las texturas
+				/*roundCounter++;*/
+
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(1);
