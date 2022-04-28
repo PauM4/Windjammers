@@ -78,6 +78,7 @@ bool SceneBeachStage::Start()
 	App->player->Enable();
 	App->player2->Enable();
 	App->frisbee->Enable();
+	App->collisions->Enable();
 
 	return ret;
 }
@@ -178,6 +179,7 @@ bool SceneBeachStage::CleanUp()
 	App->player->Disable();
 	App->player2->Disable();
 	App->frisbee->Disable();
+	App->collisions->Disable();
 
 	return true;
 }
