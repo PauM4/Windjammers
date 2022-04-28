@@ -45,7 +45,7 @@ public:
 
 	bool pared;
 	bool inicio;
-	bool posesion; //FALSE: PLAYER 1, TRUE: PLAYER 2
+	int posesion; //FALSE: PLAYER 1, TRUE: PLAYER 2
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;

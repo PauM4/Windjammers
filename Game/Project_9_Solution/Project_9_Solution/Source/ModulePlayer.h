@@ -64,9 +64,9 @@ public:
 	Collider* collider = nullptr;
 
 	// A flag to detect when the player has been destroyed
-	bool destroyed = false;
+	bool destroyed;
 
-	bool disco = false;
+	bool disco;
 	void frisbeeCollision();
 
 	// Sound effects indices

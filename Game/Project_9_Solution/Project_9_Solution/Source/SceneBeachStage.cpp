@@ -227,7 +227,7 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 			}
 
 		} 
-		else if (time == 1860) {
+		else if (time == 1860 && (App->frisbee->posesion == 1 || App->frisbee->posesion == 2)) {
 			
 			 if (App->player->score > App->player2->score) {
 				App->player->round += 1;
@@ -236,6 +236,9 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				//Llamar animación de jugador ganador 1 y las texturas
 				App->player->score = 0; 
 				App->player2->score = 0;
+				App->frisbee->position.x = 150;
+				App->frisbee->position.y = 200;
+				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				EndRound(2);
 				timerAnim.Reset();
 				
@@ -248,9 +251,10 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				//Llamar animación de jugador ganador 2 y las texturas
 				App->player->score = 0;
 				App->player2->score = 0;
+				App->frisbee->position.x = 150;
+				App->frisbee->position.y = 200;
 				EndRound(1);
 				timerAnim.Reset();
-				
 				time = 0;
 			}
 		}
@@ -259,7 +263,7 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 		}
 
 	}
-	else if (App->player->score == App->player2->score && time >=1860) {
+	else if (App->player->score == App->player2->score && time >=1860 && (App->frisbee->posesion == 1 || App->frisbee->posesion == 2)) {
 		App->player->round += 1;
 		App->player2->round += 1;
 		App->player->score = 0;
@@ -268,6 +272,9 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 		Win();
 		//Animación de cuando los dos acaban una ronda en puntuacion empate
 		timerAnim.Reset();
+		App->frisbee->position.x = 150;
+		App->frisbee->position.y = 200;
+		App->frisbee->currentAnimation2 = &App->frisbee->moving;
 		EndRound(1);
 		time = 0;
 	}
@@ -310,7 +317,6 @@ void SceneBeachStage::Win() {
 	}
 
 	else if (suddenDeath && App->player->score == App->player2->score) {
-		App->player->round = 69;
 		//Animacion y texturas de que los dos han perdido
 		//SDL Delay
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
