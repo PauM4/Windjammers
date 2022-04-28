@@ -96,8 +96,11 @@ Update_Status SceneBeachStage::Update()
 	else if (initialTime == 240)
 	{
 		startTheGame = true;
-		App->audio->PlayFx(round1FX, 0);
 		//EndRound(1);
+	}
+	if (initialTime == 40)
+	{
+		App->audio->PlayFx(round1FX);
 	}
 
 	if (startTheGame)
