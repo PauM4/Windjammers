@@ -52,6 +52,7 @@ bool SceneBeachStage::Start()
 
 	bool ret = true;
 
+	suddenDeath = false;
 	initialTime = 0;
 	startTheGame = false;
 

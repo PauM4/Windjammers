@@ -51,7 +51,7 @@ public:
 	void EndRound(int arbitro);
 	void ScoreRound(int arbitro);
 	void Win();
-	bool suddenDeath = false;
+	bool suddenDeath;
 
 	int time = 0;
 	int initialTime;
