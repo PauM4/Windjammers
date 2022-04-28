@@ -33,6 +33,8 @@ public:
 
 	int timer;
 	bool scape;
+	bool loop = true;
+	
 };
 
 #endif
