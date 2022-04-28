@@ -239,7 +239,9 @@ void SceneBeachStage::ScoreRound(int arbitro) {
 				App->player->round += 1;
 
 				Win();
+
 				//Llamar animación de jugador ganador 1 y las texturas
+
 				App->player->score = 0;
 				App->player2->score = 0;
 				EndRound(2);
