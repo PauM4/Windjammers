@@ -46,6 +46,9 @@ public:
 	bool pared;
 	bool inicio;
 	int posesion; //FALSE: PLAYER 1, TRUE: PLAYER 2
+	int PosTemp;
+	int projectil;
+	int FloorTime;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -58,6 +61,7 @@ public:
 	Animation moving;
 	Animation projectile;
 	Animation desaparece;
+	Animation stop;
 
 	// The player's collider
 	Collider* collider = nullptr;

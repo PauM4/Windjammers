@@ -37,6 +37,9 @@ public:
 	SDL_Texture* bgBeachTexture = nullptr;
 	SDL_Texture* timerTexture = nullptr;
 	SDL_Texture* uiSpriteTexture = nullptr;
+	SDL_Texture* Winn;
+
+	
 
 	Animation timerAnim;
 	Animation* currentTimerAnim = nullptr;
@@ -58,8 +61,17 @@ public:
 	bool startTheGame;
 	bool debugwinP1;
 	bool debugwinP2;
+
+	int winState;
+
+	bool godMode;
 	
-	
+	//Rectangulet esquerra
+	SDL_Rect rectanguletL = { 0, 357, 29, 3 };
+	//Rectangulet dreta
+	SDL_Rect rectanguletR = { 0, 357, 29, 3 };
+
+	bool a = 0;
 	
 };
 

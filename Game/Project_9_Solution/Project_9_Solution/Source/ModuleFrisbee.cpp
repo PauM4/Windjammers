@@ -23,6 +23,7 @@ ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 	moving.speed = 0.1f;
 
 	// Projectile motion animation
+	moving.PushBack({ 117, 48, 16, 16 });
 	projectile.PushBack({ 35, 8, 32, 14 });
 	projectile.PushBack({ 53, 7, 25, 31 });
 	projectile.PushBack({ 79, 6, 36, 34 });
@@ -33,9 +34,14 @@ ModuleFrisbee::ModuleFrisbee(bool startEnabled) : Module(startEnabled)
 	projectile.PushBack({ 195, 2, 33, 42 });
 	projectile.PushBack({ 229, 0, 43, 44 });
 	projectile.loop = false;
-	projectile.speed = 0.1f;
+	projectile.pingpong = true;
+	projectile.speed = 0.3f;
 
-	//Desaparece
+	//Desaparece: que no hace falta hacer nada
+	//Stop
+	stop.PushBack({ 117, 48, 16, 16 });
+	stop.loop = false;
+	
 	
 
 }
@@ -64,6 +70,8 @@ bool ModuleFrisbee::Start()
 
 	position.x = 150;
 	position.y = 200;
+	projectil = 0;
+	FloorTime = 0;
 
 
 	destroyed = false;
@@ -79,11 +87,20 @@ Update_Status ModuleFrisbee::Update()
 		/*uint delay = 1500;
 		SDL_Delay(delay);*/
 
+	//TIMER SUELO FRISBBE
+	if (FloorTime < 120 && currentAnimation2== &stop)
+	{
+		FloorTime++;
+		
+	}
+	
+
 	if (arbitro == 1) {
 		App->player->position.x = 20;
 		App->player->position.y = 100;
 		App->player2->position.x = 259;
 		App->player2->position.y = 100;
+		FloorTime = 0;
 		App->player->currentAnimation = &App->player->idleRAnim;
 		App->player2->currentAnimation = &App->player2->idleLAnim;
 		if (position.x != App->player->position.x || position.y != App->player->position.y) {
@@ -96,6 +113,7 @@ Update_Status ModuleFrisbee::Update()
 		App->player->position.y = 100;
 		App->player2->position.x = 259;
 		App->player2->position.y = 100;
+		FloorTime = 0;
 		App->player->currentAnimation = &App->player->idleRAnim;
 		App->player2->currentAnimation = &App->player2->idleLAnim;
 		if (position.x != App->player2->position.x || position.y != App->player2->position.y) {
@@ -127,10 +145,30 @@ Update_Status ModuleFrisbee::Update()
 
 	}
 
-	//MOV FRISBEE HORIZONTAL - PARA PLAYER2 *-1
-	if (mov == 2 && position.x >= 19 && position.x <= 276) {
-		position.x += xspeed;
+	//MOV FRISBEE HORIZONTAL PROYECTIL - PARA PLAYER2
+	if (mov == 2 && position.x >= 19 && position.x <= 276 && projectil == 1){
+
+			position.x += xspeed;
+		
 	}
+
+	if (projectil == 2) {
+
+		if (PosTemp < position.x || PosTemp > position.x) {
+			position.x += xspeed;
+		}
+		else {
+			currentAnimation2 = &stop;
+			mov = 0;
+			projectil = 0;
+			posesion = 0;
+			collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::FRISBEE, this);
+		}
+
+	
+	}
+	
+
 
 	//MOV FRISBEE HACIA ABAJO
 	if (mov == 3 && position.x >= 19 && position.x <= 276) {
@@ -153,6 +191,9 @@ Update_Status ModuleFrisbee::Update()
 			pared = false;
 		}
 	}
+	
+
+	//MOV FRISBE PROJECTIL HACIA DELANTE
 	
 
 	if (position.x <= 19 || position.x >= 276) {
@@ -209,6 +250,26 @@ Update_Status ModuleFrisbee::Update()
 
 	}
 
+	if (FloorTime == 120) {
+		if (position.x < 150 && position.x >20) {
+			App->player2->score += 2;
+			if (App->sceneBeachStage->suddenDeath) {
+				App->sceneBeachStage->Win();
+			}
+			App->sceneBeachStage->ScoreRound(1);
+		}
+		if (position.x > 150 && position.x <275) {
+			App->player->score += 2;
+			if (App->sceneBeachStage->suddenDeath) {
+				App->sceneBeachStage->Win();
+			}
+
+			App->sceneBeachStage->ScoreRound(2);
+		}
+		position.x = 150;
+		position.y = 200;
+	}
+
 
 	currentAnimation2->Update();
 
@@ -232,6 +293,7 @@ void ModuleFrisbee::OnCollision(Collider* c1, Collider* c2)
 	{
 		arbitro = 0;
 		currentAnimation2 = &desaparece;
+		FloorTime = 0;
 
 	}
 }
