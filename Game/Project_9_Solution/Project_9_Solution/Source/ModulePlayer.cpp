@@ -151,14 +151,21 @@ bool ModulePlayer::Start()
 
 	char lookupTable[] = { "0123456789G " };
 	scoreFont = App->fonts->Load("Assets/Sprites/UI/Fonts/scoreFont.png", lookupTable, 1);
-
+	FrisbeeTime = 0;
 	return ret;
 }
 
 Update_Status ModulePlayer::Update()
 {
+
+
 	if (App->sceneBeachStage->startTheGame)
 	{
+		if (FrisbeeTime < 120 && App->frisbee->posesion == 1)
+		{
+			FrisbeeTime++;
+		}
+
 		//MOVIMIENTO
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && App->frisbee->posesion != 1)
 		{
@@ -251,13 +258,14 @@ Update_Status ModulePlayer::Update()
 			}
 
 
-			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == 1)
+			if ((App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN || FrisbeeTime == 120 )&& disco && App->frisbee->posesion == 1)
 			{
 				App->frisbee->mov = 2;
 				disco = false;
 				App->frisbee->posesion = 0;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
+				FrisbeeTime = 0;
 				break;
 
 			}

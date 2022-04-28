@@ -73,6 +73,7 @@ public:
 	uint explosionFx;
 	uint tossFx;
 	uint lobFx;
+	int FrisbeeTime;
 
 	// Font score index
 	uint score;

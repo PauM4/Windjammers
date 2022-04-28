@@ -56,6 +56,8 @@ public:
 	int time;
 	int initialTime;
 	bool startTheGame;
+	bool debugwinP1;
+	bool debugwinP2;
 	
 	
 	

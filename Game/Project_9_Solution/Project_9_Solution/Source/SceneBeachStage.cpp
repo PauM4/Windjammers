@@ -83,6 +83,9 @@ bool SceneBeachStage::Start()
 	App->frisbee->Enable();
 	App->collisions->Enable();
 
+	debugwinP1 = false;
+	debugwinP2 = false;
+
 	return ret;
 }
 
@@ -118,6 +121,8 @@ Update_Status SceneBeachStage::Update()
 		SDL_Delay(1500);
 		App->audio->PlayMusic("Assets/Music/silenceAudio.ogg");
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+		debugwinP1 = true;
+		Win();
 	}
 	// DEBUG INSTANT LOSE
 	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
@@ -126,6 +131,8 @@ Update_Status SceneBeachStage::Update()
 		SDL_Delay(500);
 		App->audio->PlayMusic("Assets/Music/silenceAudio.ogg");
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+		debugwinP2 = true;
+		Win();
 	}
 
 
@@ -328,16 +335,19 @@ void SceneBeachStage::Win() {
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
 
-	else if (App->player->round == 2 && !suddenDeath) {
+	else if ((App->player->round == 2 && !suddenDeath) || debugwinP1) {
 		//llamar animación y texturas de que ha ganado el primer jugador la partida
 		//SDL Delay
+		
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
+
 	
 	}
 
-	else if (App->player2->round == 2&&!suddenDeath) {
+	else if ((App->player2->round == 2&&!suddenDeath) || debugwinP2) {
 		//llamar animación y texturas de que ha ganado el segundo jugador la partida
 			//SDL Delay
+		
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 
 	}
@@ -347,4 +357,8 @@ void SceneBeachStage::Win() {
 		//SDL Delay
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
+
+
+
+
 }
