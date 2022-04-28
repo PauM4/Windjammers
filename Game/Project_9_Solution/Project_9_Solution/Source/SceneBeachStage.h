@@ -56,6 +56,7 @@ public:
 	int time = 0;
 	int initialTime;
 	bool startTheGame;
+	bool round1 = true;
 	
 	
 };

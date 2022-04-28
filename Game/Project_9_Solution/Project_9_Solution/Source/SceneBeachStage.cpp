@@ -126,7 +126,12 @@ Update_Status SceneBeachStage::Update()
 	}
 
 	//ERROR Se ejecuta el audio todo el rato, debe de haber una manera de que se ejecute con una tecla para pasar de ronda
-	//App->audio->PlayFx(round1FX);
+	while (round1 == true){
+		App->audio->PlayFx(round1FX, 0);
+		round1 = false;
+	}
+	
+	//App->audio->PlayFx(round1FX, 1);
 
 	ScoreRound(0);
 
