@@ -21,6 +21,8 @@ SceneCharacterSelect::~SceneCharacterSelect()
 // Load assets
 bool SceneCharacterSelect::Start()
 {
+	moveFx = 0;
+	hiromiSelected = 0;
 	LOG("Loading background assets");
 
 	bool ret = true;

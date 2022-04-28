@@ -20,6 +20,7 @@ SceneTitle::~SceneTitle()
 // Load assets
 bool SceneTitle::Start()
 {
+	selectFx = 0;
 	LOG("Loading background assets");
 
 	bool ret = true;

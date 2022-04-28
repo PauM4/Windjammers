@@ -58,7 +58,7 @@ public:
 	Animation leftAnim;
 
 	//Last Move
-	int last1 = 1;
+	int last1;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -70,13 +70,13 @@ public:
 	void frisbeeCollision();
 
 	// Sound effects indices
-	uint explosionFx = 0;
-	uint tossFx = 0;
-	uint lobFx = 0;
+	uint explosionFx;
+	uint tossFx;
+	uint lobFx;
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
+	uint score;
+	int scoreFont;
 	char scoreText[10] = { "\0" };
 
 	//Numero de rondas ganadas

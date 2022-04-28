@@ -20,6 +20,8 @@ SceneStageSelect::~SceneStageSelect()
 // Load assets
 bool SceneStageSelect::Start()
 {
+	selectFx = 0;
+	moveFx = 0;
 	LOG("Loading background assets");
 
 	bool ret = true;

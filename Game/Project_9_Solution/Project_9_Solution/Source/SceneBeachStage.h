@@ -44,7 +44,7 @@ public:
 	Animation* currentBeachAnim = nullptr;
 
 	// Sound effects indices
-	uint round1FX = 0;
+	uint round1FX;
 
 	//uint winFx = 0;
 
@@ -52,11 +52,11 @@ public:
 	void ScoreRound(int arbitro);
 	void Win();
 	bool suddenDeath;
-
-	int time = 0;
+	
+	int time;
 	int initialTime;
 	bool startTheGame;
-	bool round1 = true;
+	
 	
 	
 };

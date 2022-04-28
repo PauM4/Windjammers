@@ -51,8 +51,8 @@ public:
 
 
 	// Sound effects indices
-	uint moveFx = 0;
-	uint hiromiSelected = 0;
+	uint moveFx;
+	uint hiromiSelected;
 
 	///Coordinates
 	int x1, y1;

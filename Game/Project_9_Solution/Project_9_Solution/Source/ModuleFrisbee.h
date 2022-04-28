@@ -37,15 +37,15 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	int speed;
 	int xspeed;
 	int yspeed;
 	int mov;
-	int arbitro = 1;
+	int arbitro;
 
-	bool pared = false;
-	bool inicio = false;
-	bool posesion = false; //FALSE: PLAYER 1, TRUE: PLAYER 2
+	bool pared;
+	bool inicio;
+	bool posesion; //FALSE: PLAYER 1, TRUE: PLAYER 2
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -63,7 +63,7 @@ public:
 	Collider* collider = nullptr;
 
 	// A flag to detect when the player has been destroyed
-	bool destroyed = false;
+	bool destroyed;
 
 	
 

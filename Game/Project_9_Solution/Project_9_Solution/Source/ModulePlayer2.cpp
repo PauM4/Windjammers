@@ -19,6 +19,8 @@
 
 ModulePlayer2::ModulePlayer2(bool startEnabled) : Module(startEnabled)
 {
+
+
 	// Idle Left Animation
 	idleLAnim.PushBack({ 393, 359, 23, 36 });
 	idleLAnim.PushBack({ 370, 359, 23, 35 });
@@ -120,6 +122,21 @@ ModulePlayer2::~ModulePlayer2()
 
 bool ModulePlayer2::Start()
 {
+
+	speed = 1;
+	score2 = 0;
+
+	 last2 = 0;
+
+	 explosionFx = 0;
+	 tossFx = 0;
+	 lobFx = 0;
+
+
+	 score = 000;
+	 scoreFont = -1;
+	 round = 0;
+
 	LOG("Loading player textures");
 
 	bool ret = true;
@@ -294,7 +311,7 @@ Update_Status ModulePlayer2::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%2d", score);
+	sprintf_s(scoreText, 10, "%2d", round);
 
 	App->fonts->BlitText(163, 16, scoreFont, scoreText);
 

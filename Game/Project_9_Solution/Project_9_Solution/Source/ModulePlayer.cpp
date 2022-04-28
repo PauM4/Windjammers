@@ -117,6 +117,17 @@ ModulePlayer::~ModulePlayer()
 
 bool ModulePlayer::Start()
 {
+	last1 = 1;
+	explosionFx = 0;
+	tossFx = 0;
+	lobFx = 0;
+	score = 000;
+	scoreFont = -1;
+	
+
+	 //Numero de rondas ganadas
+	 round = 0;
+
 	LOG("Loading player textures");
 
 	bool ret = true;
@@ -295,7 +306,7 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%2d", score);
+	sprintf_s(scoreText, 10, "%2d", round);
 	
 	App->fonts->BlitText(115, 16, scoreFont, scoreText);
 

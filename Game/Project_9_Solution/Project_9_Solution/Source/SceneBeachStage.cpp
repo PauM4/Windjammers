@@ -47,7 +47,8 @@ bool SceneBeachStage::Start()
 {
 	
 	
-
+	round1FX = 0;
+	time = 0;
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -94,6 +95,7 @@ Update_Status SceneBeachStage::Update()
 	else if (initialTime == 240)
 	{
 		startTheGame = true;
+		App->audio->PlayFx(round1FX, 0);
 		//EndRound(1);
 	}
 
@@ -125,11 +127,6 @@ Update_Status SceneBeachStage::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneTitle, 15);
 	}
 
-	//Round1FX
-	while (round1 == true){
-		App->audio->PlayFx(round1FX, 0);
-		round1 = false;
-	}
 
 	ScoreRound(0);
 

@@ -32,7 +32,7 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 
 	// Sound effects indices
-	uint selectFx = 0;
+	uint selectFx;
 
 };
 

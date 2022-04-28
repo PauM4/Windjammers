@@ -37,10 +37,10 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	int speed;
 
 	// Score Player 2
-	int score2 = 0;
+	int score2;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -61,7 +61,7 @@ public:
 	Animation leftAnim;
 
 	//Last Move
-	int last2 = 0;
+	int last2;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -73,16 +73,16 @@ public:
 	void frisbeeCollision();
 
 	// Sound effects indices
-	uint explosionFx = 0;
-	uint tossFx = 0;
-	uint lobFx = 0;
+	uint explosionFx;
+	uint tossFx;
+	uint lobFx;
 
 	// Font score index
-	uint score = 000;
-	int scoreFont = -1;
+	uint score;
+	int scoreFont;
 	char scoreText[10] = { "\0" };
 	//Numero de rondas ganadas
-	int round = 0;
+	int round;
 
 };
 

@@ -56,8 +56,8 @@ public:
 	SDL_Rect selectSquare;
 
 	// Sound effects indices
-	uint selectFx = 0;
-	uint moveFx = 0;
+	uint selectFx;
+	uint moveFx;
 
 	//Coordinates
 	int yMove, x1, x2, x3, x4, x5, x6;

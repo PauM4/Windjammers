@@ -47,6 +47,13 @@ ModuleFrisbee::~ModuleFrisbee()
 
 bool ModuleFrisbee::Start()
 {
+	speed = 1;
+	arbitro = 1;
+	pared = false;
+	inicio = false;
+	posesion = false;
+	destroyed = false;
+
 	currentAnimation2 = &moving;
 	LOG("Loading frisbee textures");
 
