@@ -123,13 +123,10 @@ bool ModulePlayer::Start()
 	lobFx = 0;
 	score = 000;
 	scoreFont = -1;
-	destroyed = false;
 
-	disco = false;
-	
 
-	 //Numero de rondas ganadas
-	 round = 0;
+	//Numero de rondas ganadas
+	round = 0;
 
 	LOG("Loading player textures");
 
@@ -151,23 +148,16 @@ bool ModulePlayer::Start()
 
 	char lookupTable[] = { "0123456789G " };
 	scoreFont = App->fonts->Load("Assets/Sprites/UI/Fonts/scoreFont.png", lookupTable, 1);
-	FrisbeeTime = 0;
+
 	return ret;
 }
 
 Update_Status ModulePlayer::Update()
 {
-
-
 	if (App->sceneBeachStage->startTheGame)
 	{
-		if (FrisbeeTime < 120 && App->frisbee->posesion == 1)
-		{
-			FrisbeeTime++;
-		}
-
 		//MOVIMIENTO
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && App->frisbee->posesion != 1)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT && position.x > 20 && !disco)
 		{
 			position.x -= speed;
 
@@ -179,7 +169,7 @@ Update_Status ModulePlayer::Update()
 			last1 = 0;
 		}
 
-		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && App->frisbee->posesion != 1)
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT && position.x < 110 && !disco)
 		{
 			position.x += speed;
 			if (currentAnimation != &rightAnim && App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
@@ -190,7 +180,7 @@ Update_Status ModulePlayer::Update()
 			last1 = 1;
 		}
 
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && App->frisbee->posesion != 1)
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && position.y < 150 && !disco)
 		{
 			position.y += speed;
 			if (currentAnimation != &downLAnim && last1 == 0)
@@ -205,7 +195,7 @@ Update_Status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && App->frisbee->posesion != 1)
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && position.y > 50 && !disco)
 		{
 			position.y -= speed;
 			if (currentAnimation != &upLAnim && last1 == 0)
@@ -223,7 +213,7 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE
-			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 0 && App->frisbee->mov != 1)
+			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 0 && !disco)
 			currentAnimation = &idleLAnim;
 
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
@@ -232,25 +222,25 @@ Update_Status ModulePlayer::Update()
 			&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE && last1 == 1 && !disco)
 			currentAnimation = &idleRAnim;
 
-	
+
 		//LANZAMIENTO DE DISCO NORMAL
 		for (int i = 0; i < 1; i++) {
-			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 1)
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
 			{
 				App->frisbee->mov = 1;
 				disco = false;
-				App->frisbee->posesion = 0;
+				App->frisbee->posesion = true;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
 				break;
 			}
 
 
-			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 1)
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == false)
 			{
 				App->frisbee->mov = 3;
 				disco = false;
-				App->frisbee->posesion = 0;
+				App->frisbee->posesion = true;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
 				break;
@@ -258,14 +248,13 @@ Update_Status ModulePlayer::Update()
 			}
 
 
-			if ((App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN || FrisbeeTime == 120 )&& disco && App->frisbee->posesion == 1)
+			if (App->input->keys[SDL_SCANCODE_X] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == false)
 			{
 				App->frisbee->mov = 2;
 				disco = false;
-				App->frisbee->posesion = 0;
+				App->frisbee->posesion = true;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
-				FrisbeeTime = 0;
 				break;
 
 			}
@@ -301,7 +290,7 @@ Update_Status ModulePlayer::Update()
 		collider->SetPos(position.x, position.y);
 	}
 
-	
+
 
 	currentAnimation->Update();
 
@@ -321,11 +310,16 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		sprintf_s(scoreText, 10, "%2d", round);
 
-		App->fonts->BlitText(115, 16, scoreFont, scoreText);
+		App->fonts->BlitText(117, 17, scoreFont, scoreText);
 
 		//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
 	}
 
+	//5Punts UI de BEACH per sobre el player
+	if (!App->sceneBeachStage->startTheGame)
+	{
+		App->render->Blit(App->sceneBeachStage->uiSpriteTexture, 7, 92, &App->sceneBeachStage->cincPuntsL);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -345,9 +339,9 @@ void ModulePlayer::frisbeeCollision() {
 	disco = true;
 	App->frisbee->xspeed = 3;
 	App->frisbee->yspeed = 3;
-	App->frisbee->position.x = position.x +28;
+	App->frisbee->position.x = position.x + 28;
 	App->frisbee->position.y = position.y;
-	App->frisbee->posesion = 1;
+	App->frisbee->posesion = false;
 	//Al recibir disco hace idle con disco en la mano
 	currentAnimation = &idleDisk;
 }

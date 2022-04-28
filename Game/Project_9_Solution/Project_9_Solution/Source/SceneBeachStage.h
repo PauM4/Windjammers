@@ -52,15 +52,27 @@ public:
 	void ScoreRound(int arbitro);
 	void Win();
 	bool suddenDeath;
-	
+
 	int time;
 	int initialTime;
 	bool startTheGame;
-	bool debugwinP1;
-	bool debugwinP2;
-	
-	
-	
+
+
+	//All rects
+	SDL_Rect rectBeach;
+	SDL_Rect p1Rect;
+	SDL_Rect p2Rect;
+	SDL_Rect japanFlagRect;
+	SDL_Rect timer;
+	SDL_Rect rectTimer;
+	SDL_Rect rectNormes;
+	SDL_Rect tresPuntsL;
+	SDL_Rect cincPuntsL;
+	SDL_Rect tresPuntsR;
+	SDL_Rect cincPuntsR;
+	SDL_Rect set1Rect;
+	SDL_Rect rectTimer88;
+
 };
 
 #endif
