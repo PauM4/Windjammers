@@ -123,7 +123,7 @@ ModulePlayer2::~ModulePlayer2()
 bool ModulePlayer2::Start()
 {
 
-	speed = 1;
+	speed = 2;
 	score2 = 0;
 
 	last2 = 0;
@@ -341,8 +341,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 void ModulePlayer2::frisbeeCollision() {
 	App->frisbee->mov = 0;
 	disco = true;
-	App->frisbee->xspeed = -3;
-	App->frisbee->yspeed = 3;
+	App->frisbee->xspeed = -4;
+	App->frisbee->yspeed = 4;
 	App->frisbee->position.x = position.x - 17;
 	App->frisbee->position.y = position.y;
 	App->frisbee->posesion = true;
