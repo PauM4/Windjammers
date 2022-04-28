@@ -27,7 +27,13 @@ bool SceneIntro::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/UI/startScreen.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 0.0f);
+	introFx = App->audio->LoadFx("Assets/FX/introTitle.wav");
+	if (loop == true) {
+		App->audio->PlayFx(introFx,0);
+		loop = false;
+
+	}
+	//App->audio->PlayMusic("Assets/Music/introTitle.ogg", 0.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
