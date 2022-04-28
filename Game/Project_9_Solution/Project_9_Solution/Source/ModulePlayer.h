@@ -81,7 +81,6 @@ public:
 
 	//Numero de rondas ganadas
 	int round = 0;
-	int set = 0;
 
 };
 
