@@ -57,7 +57,6 @@ public:
 	int initialTime;
 	bool startTheGame;
 
-
 	//All rects
 	SDL_Rect rectBeach;
 	SDL_Rect p1Rect;
