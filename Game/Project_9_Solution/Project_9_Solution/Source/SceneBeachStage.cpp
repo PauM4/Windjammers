@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleFrisbee.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL.h"
 
@@ -138,22 +139,10 @@ Update_Status SceneBeachStage::PostUpdate()
 {
 
 	// Draw everything --------------------------------------
-	//App->render->Blit(beachTexture, 0, 0, NULL);
-	//Beach background
+		//App->render->Blit(beachTexture, 0, 0, NULL);
+		//Beach background
 	SDL_Rect rectBeach = currentBeachAnim->GetCurrentFrame();
 	App->render->Blit(bgBeachTexture, 0, 0, &rectBeach);
-
-	if (startTheGame)
-	{
-		//Timer
-		SDL_Rect rectTimer = currentTimerAnim->GetCurrentFrame();
-		App->render->Blit(timerTexture, 144, 13, &rectTimer);
-	}
-	else
-	{
-		SDL_Rect rectNormes = { 207, 11, 151, 15 };
-		App->render->Blit(uiSpriteTexture, 75, 150, &rectNormes);
-	}
 
 	//P1 UI
 	SDL_Rect p1Rect = { 359, 0, 15, 8 };
@@ -168,9 +157,46 @@ Update_Status SceneBeachStage::PostUpdate()
 	App->render->Blit(uiSpriteTexture, 40, 10, &japanFlagRect);
 	App->render->Blit(uiSpriteTexture, 230, 10, &japanFlagRect);
 
-	//Timer
-	SDL_Rect rectTimer = currentTimerAnim->GetCurrentFrame();
-	App->render->Blit(timerTexture, 144, 13, &rectTimer);
+	if (startTheGame)
+	{
+		//Timer
+		SDL_Rect rectTimer = currentTimerAnim->GetCurrentFrame();
+		App->render->Blit(timerTexture, 144, 13, &rectTimer);
+	}
+	else
+	{
+		//12 points / 30 sec
+		SDL_Rect rectNormes = { 207, 11, 151, 15 };
+		App->render->Blit(uiSpriteTexture, 77, 168, &rectNormes);
+
+		//puntuació tots gols L
+		SDL_Rect tresPuntsL = { 0, 188, 63, 34 };
+		SDL_Rect cincPuntsL = { 76, 258, 63, 35 };
+		App->render->Blit(uiSpriteTexture, 7, 30, &tresPuntsL);
+		App->render->Blit(uiSpriteTexture, 7, 92, &cincPuntsL);
+		App->render->Blit(uiSpriteTexture, 7, 158, &tresPuntsL);
+
+		//puntuació tots gols R
+		SDL_Rect tresPuntsR = { 112, 120, 63, 34 };
+		SDL_Rect cincPuntsR = { 74,	224, 63, 35 };
+		App->render->Blit(uiSpriteTexture, 236, 30, &tresPuntsR);
+		App->render->Blit(uiSpriteTexture, 236, 92, &cincPuntsR);
+		App->render->Blit(uiSpriteTexture, 236, 158, &tresPuntsR);
+
+		//Set1
+		SDL_Rect set1Rect = { 160, 300, 160, 56 };
+		App->render->Blit(uiSpriteTexture, 72, 80, &set1Rect);
+
+		//Time88
+		SDL_Rect rectTimer88 = { 0, 0, 15, 15 };
+		App->render->Blit(timerTexture, 144, 13, &rectTimer88);
+
+		//Score 00-00
+		App->fonts->BlitText(155, 16, App->player->scoreFont, App->player->scoreText);
+
+		//App->fonts->BlitText(115, 16, scoreFont, scoreText);
+
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

@@ -309,11 +309,15 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%2d", round);
-	
-	App->fonts->BlitText(115, 16, scoreFont, scoreText);
+	if (App->sceneBeachStage->startTheGame)
+	{
+		sprintf_s(scoreText, 10, "%2d", round);
 
-	//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
+		App->fonts->BlitText(115, 16, scoreFont, scoreText);
+
+		//App->fonts->BlitText(20, 150, scoreFont, "0 1 2 3 4 5 6 7 8 9 G");
+	}
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
