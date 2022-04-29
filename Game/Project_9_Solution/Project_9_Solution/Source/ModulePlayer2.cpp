@@ -123,7 +123,7 @@ ModulePlayer2::~ModulePlayer2()
 bool ModulePlayer2::Start()
 {
 
-	speed = 1;
+	speed = 2;
 	score2 = 0;
 
 	 last2 = 0;
@@ -152,6 +152,7 @@ bool ModulePlayer2::Start()
 	position.y = 100;
 
 	destroyed = false;
+	disco = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 31 }, Collider::Type::PLAYER, this);
 
@@ -241,33 +242,36 @@ Update_Status ModulePlayer2::Update()
 
 		//LANZAMIENTO DE DISCO NORMAL
 		for (int i = 0; i < 1; i++) {
-			if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 2)
+			if (App->input->keys[SDL_SCANCODE_O] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 2)
 			{
 				App->frisbee->mov = 1;
 				disco = false;
 				App->frisbee->posesion = 0;
+				App->frisbee->projectil = 1;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
 				break;
 			}
 
 
-			if (App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 2)
+			if (App->input->keys[SDL_SCANCODE_O] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && disco && App->frisbee->posesion == 2)
 			{
 				App->frisbee->mov = 3;
 				disco = false;
 				App->frisbee->posesion = 0;
+				App->frisbee->projectil = 1;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
 				break;
 
 			}
 
-			if ((App->input->keys[SDL_SCANCODE_K] == Key_State::KEY_DOWN || FrisbeeTime == 120) && App->frisbee->posesion == 2)
+			if ((App->input->keys[SDL_SCANCODE_O] == Key_State::KEY_DOWN || FrisbeeTime == 120) && App->frisbee->posesion == 2)
 			{
 				App->frisbee->mov = 2;
 				disco = false;
 				App->frisbee->posesion = 0;
+				App->frisbee->projectil = 1;
 				App->frisbee->currentAnimation2 = &App->frisbee->moving;
 				App->audio->PlayFx(tossFx);
 				FrisbeeTime = 0;
@@ -277,26 +281,33 @@ Update_Status ModulePlayer2::Update()
 
 		//LANZAMIENTO DE DISCO PARÁBOLA
 		for (int i = 0; i < 1; i++) {
-			if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco)
+			if (App->input->keys[SDL_SCANCODE_P] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && disco)
 			{
-				App->particles->AddParticle(-2.5, -1, App->particles->frisbeeProjectile, position.x - 20, position.y - 20, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(lobFx);
+
+				
 				break;
 			}
 
 
-			if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && disco)
+			if (App->input->keys[SDL_SCANCODE_P] == Key_State::KEY_DOWN && App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && disco)
 			{
-				App->particles->AddParticle(-2.5, 1, App->particles->frisbeeProjectile, position.x - 20, position.y + 20, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(lobFx);
+				
 				break;
 
 			}
 
-			if (App->input->keys[SDL_SCANCODE_J] == Key_State::KEY_DOWN)
+			if (App->input->keys[SDL_SCANCODE_P] == Key_State::KEY_DOWN && disco && App->frisbee->posesion == 2)
 			{
-				App->particles->AddParticle(-2.5, 0, App->particles->frisbeeProjectile, position.x - 20, position.y, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(lobFx);
+				App->frisbee->mov = 2;
+				disco = false;
+				App->frisbee->posesion = 0;
+				App->frisbee->currentAnimation2 = &App->frisbee->projectile;
+				App->audio->PlayFx(tossFx);
+				FrisbeeTime = 0;
+				App->frisbee->projectil = 2;
+				App->frisbee->PosTemp = 30;
+				App->collisions->RemoveCollider(App->frisbee->collider);
+
 				break;
 			}
 		}
@@ -320,7 +331,7 @@ Update_Status ModulePlayer2::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%2d", round);
+	sprintf_s(scoreText, 10, "%2d", score);
 
 	App->fonts->BlitText(163, 16, scoreFont, scoreText);
 
@@ -341,8 +352,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 void ModulePlayer2::frisbeeCollision() {
 	App->frisbee->mov = 0;
 	disco = true;
-	App->frisbee->xspeed = -3;
-	App->frisbee->yspeed = 3;
+	App->frisbee->xspeed = -4;
+	App->frisbee->yspeed = 4;
 	App->frisbee->position.x = position.x - 17;
 	App->frisbee->position.y = position.y;
 	App->frisbee->posesion = 2;
