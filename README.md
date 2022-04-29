@@ -40,7 +40,10 @@ Player 2 (Right):
 - The player cannot move when he has the frisbee. The player cannot shoot at his own goal.
 
 F1 activates god mode. This disables scoring and timing.
+
 F2 activates the colliders.
+
 F3 activates direct win for player 1.
+
 F4 activates direct win for player 2.
 
