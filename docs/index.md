@@ -21,20 +21,20 @@ A la espera de Gamepad.
 
 ## Team Members
 Pau Argiz - Management:
-- [Gituhb account](https://github.com/PauM4)
+- [Gituhub account](https://github.com/PauM4)
 
 Arnau González - Q&A:
-- [Gituhb account](https://github.com/arinWald)
+- [Gituhub account](https://github.com/arinWald)
 
 Joel Romero - Design:
-- [Gituhb account](https://github.com/Joeltecke25)
+- [Gituhub account](https://github.com/Joeltecke25)
 
 Oriol Martín - Art:
-- [Gituhb account](https://github.com/Urii98)
+- [Gituhub account](https://github.com/Urii98)
 
 Iván Bermúdez - Code:
-- [Gituhb account](https://github.com/IvanBSupc)
+- [Gituhub account](https://github.com/IvanBSupc)
 
-### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original)!
-### Check our [Github Repository](https://github.com/PauM4/Windjammers)!
-### See more information in our Windjammers [Wiki](https://github.com/PauM4/Windjammers/wiki)!
+### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original) !
+### Check our [Github Repository](https://github.com/PauM4/Windjammers) !
+### See more information in our Windjammers [Wiki](https://github.com/PauM4/Windjammers/wiki) !
