@@ -1,27 +1,36 @@
-This is the README file from the Piojo Games group for Windjammers v0.5.
+# WINDJAMMERS by PIOJO GAMES
+We’re going to replicate the 1994 Windjammers game developed and published by DataEast as a tribute to the game. This project has been done by five catalan students of CITM - UPC (Terrasa, Spain).
 
-Our Github link: https://github.com/PauM4/Windjammers
+- Our Project Web Site: https://paum4.github.io/Windjammers/
+- Our Project Wiki: https://github.com/PauM4/Windjammers/wiki
+- Our Github Repository: https://github.com/PauM4/Windjammers
 
-Piojo Games members:
+## PIOJO GAMES members
 
-- Pau Argiz Gutierrez
-- Iván Bermúdez Sagra
-- Arnau González Acosta
-- Oriol Martín Corella
-- Joel Romero Botella
+Pau Argiz - Management:
+- Gituhub account: https://github.com/PauM4
 
-Description of the Game:
+Arnau González - Q&A:
+- Gituhub account: https://github.com/arinWald
 
+Joel Romero - Design:
+- Gituhub account: https://github.com/Joeltecke25
+
+Oriol Martín - Art:
+- Gituhub account: https://github.com/Urii98
+
+Iván Bermúdez - Code:
+- Gituhub account: https://github.com/IvanBSupc
+
+## Description of the game
 Windjammers is a 1vs1 sport game arcade. Mainly, the sport that was based on this game was frisbee. 
 The player has the function of using his character to throw the frisbee towards the opposite field and make the frisbee contact with the ground or pass out of the opposite side.
 
-How to play the game:
+## How to play the game
 
 This is a two player game.
 
 To move from one screen to another, you have to press the space bar.
-In the character selection menu, both players can only choose Hiromi Mita.
-In the stage selection menu, you can only choose Beach.
 
 The controls are:
 
