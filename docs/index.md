@@ -1,49 +1,40 @@
-This is the README file from the Piojo Games group for Windjammers v0.5.
+![windjammers_logo](https://user-images.githubusercontent.com/99950250/171996130-2330e767-ff34-444c-aacf-3424138b1fb3.png)
 
-Our Github link: https://github.com/PauM4/Windjammers
+## Our Project
+We’re going to replicate the 1994 Windjammers game developed and published by DataEast as a tribute to the game. This project has been done by five catalan students of CITM - UPC (Terrasa, Spain).
 
-Piojo Games members:
+## About the Game
+Windjammers is a 1vs1 sport game arcade, where different styles of sports are mixed (frisbee, volleyball and handball).  Mainly, the sport that was based on this game was frisbee.  The player has the function of using his character to throw the frisbee towards the opposite field and make the frisbee  contact with the ground or pass out of the opposite side.
 
-- Pau Argiz Gutierrez
-- Iván Bermúdez Sagra
-- Arnau González Acosta
-- Oriol Martín Corella
-- Joel Romero Botella
+## Trailer
+A la espera de trailer.
 
-Description of the Game:
+## Controls
 
-Windjammers is a 1vs1 sport game arcade. Mainly, the sport that was based on this game was frisbee. 
-The player has the function of using his character to throw the frisbee towards the opposite field and make the frisbee contact with the ground or pass out of the opposite side.
+```markdown
+A la espera de Gamepad.
+```
 
-How to play the game:
+# Our Team
+![logo](https://user-images.githubusercontent.com/99950250/171996703-98cfc287-27ad-4119-b9d0-2c5d8a3657ed.png)
+![nova](https://user-images.githubusercontent.com/99950250/171996710-a613288d-f117-46f6-b8c0-039c82c0236e.jpg)
 
-This is a two player game.
+## Team Members
+Pau Argiz - Management:
+- [Gituhb account](https://github.com/PauM4)
 
-To move from one screen to another, you have to press the space bar.
-In the character selection menu, both players can only choose Hiromi Mita.
-In the stage selection menu, you can only choose Beach.
+Arnau González - Q&A:
+- [Gituhb account](https://github.com/arinWald)
 
-The controls are:
+Joel Romero - Design:
+- [Gituhb account](https://github.com/Joeltecke25)
 
-Player 1(Left):
+Oriol Martín - Art:
+- [Gituhb account](https://github.com/Urii98)
 
-- WASD for movement.
-- V to throw frisbee. Pressing W or S you can launch diagonally up or down respectively.
-- B to throw a lob. 
-- The player cannot move when he has the frisbee. The player cannot shoot at his own goal.
+Iván Bermúdez - Code:
+- [Gituhb account](https://github.com/IvanBSupc)
 
-Player 2 (Right):
-
-- Arrow keys for movement.
-- O to throw frisbee. Pressing arrow keys you can launch diagonally up or down respectively.
-- P to throw a lob.
-- The player cannot move when he has the frisbee. The player cannot shoot at his own goal.
-
-F1 activates god mode. This disables scoring and timing.
-
-F2 activates the colliders.
-
-F3 activates direct win for player 1.
-
-F4 activates direct win for player 2.
-
+### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original)!
+### Check our [Github Repository](https://github.com/PauM4/Windjammers)!
+### See more information in our Windjammers [Wiki](https://github.com/PauM4/Windjammers/wiki)!
