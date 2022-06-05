@@ -12,7 +12,37 @@ A la espera de trailer.
 ## Controls
 
 ```markdown
-A la espera de Gamepad.
+**Gamepad:**
+
+Both Players:
+- DPAD for movement.
+- A to throw frisbee. Pressing DPAD you can launch diagonally up or down respectively.
+- B to throw a lob. Pressing DPAD you can launch diagonally up or down respectively.
+- Spamming Y to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Start to pass screens, select character and select stage.
+
+**Keyboard:**
+
+Player 1(Left):
+- WASD for movement.
+- V to throw frisbee. Pressing W or S you can launch diagonally up or down respectively.
+- B to throw a lob. Pressing W or S you can launch diagonally up or down respectively.
+- Spamming N to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Space bar to pass screens, select character and select stage.
+
+Player 2 (Right):
+- Arrow keys for movement.
+- O to throw frisbee. Pressing arrow keys you can launch diagonally up or down respectively.
+- P to throw a lob. Pressing arrow keys you can launch diagonally up or down respectively.
+- Spamming I to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Enter button to select character.
+
+**Debug functions:**
+- F1 activates god mode. This disables scoring and timing.
+- F2 activates the colliders.
+- F3 activates direct win for player 1.
+- F4 activates direct win for player 2.
+- F5 activates the debug data.
 ```
 
 # Our Team
