@@ -28,31 +28,41 @@ The player has the function of using his character to throw the frisbee towards 
 
 ## How to play the game
 
-This is a two player game.
+- This is a two player game.
+- To move from one screen to another, you have to press the space bar.
+- In Character Selection, both players can choose the character they want from the 3 available.
+- In Stage Selection, only Player 1 can choose the stage from the 3 available.
+- The player cannot move when he has the frisbee. The player cannot shoot at his own goal. The player cannot block a super shot.
 
-To move from one screen to another, you have to press the space bar.
+## Controls
+### Gamepad:
 
-The controls are:
+Both Players:
+- DPAD for movement.
+- A to throw frisbee. Pressing DPAD you can launch diagonally up or down respectively.
+- B to throw a lob. Pressing DPAD you can launch diagonally up or down respectively.
+- Spamming Y to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Start to pass screens, select character and select stage.
+
+### Keyboard:
 
 Player 1(Left):
-
 - WASD for movement.
 - V to throw frisbee. Pressing W or S you can launch diagonally up or down respectively.
-- B to throw a lob. 
-- The player cannot move when he has the frisbee. The player cannot shoot at his own goal.
+- B to throw a lob. Pressing W or S you can launch diagonally up or down respectively.
+- Spamming N to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Space bar to pass screens, select character and select stage.
 
 Player 2 (Right):
-
 - Arrow keys for movement.
 - O to throw frisbee. Pressing arrow keys you can launch diagonally up or down respectively.
-- P to throw a lob.
-- The player cannot move when he has the frisbee. The player cannot shoot at his own goal.
+- P to throw a lob. Pressing arrow keys you can launch diagonally up or down respectively.
+- Spamming I to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- Enter button to select character.
 
-F1 activates god mode. This disables scoring and timing.
-
-F2 activates the colliders.
-
-F3 activates direct win for player 1.
-
-F4 activates direct win for player 2.
-
+### Debug functions:
+- F1 activates god mode. This disables scoring and timing.
+- F2 activates the colliders.
+- F3 activates direct win for player 1.
+- F4 activates direct win for player 2.
+- F5 activates the debug data.
