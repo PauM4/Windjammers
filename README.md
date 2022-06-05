@@ -7,19 +7,19 @@ We’re going to replicate the 1994 Windjammers game developed and published by 
 
 ## PIOJO GAMES members
 
-Pau Argiz - Management, Gameplay Programmer, Q&A:
+Pau Argiz Gutiérrez - Management, Gameplay Programmer, Q&A:
 - Gituhub account: https://github.com/PauM4
 
-Arnau González - UI, Audio Programmer, Game Designer:
+Arnau González Acosta - UI, Audio Programmer, Game Designer:
 - Gituhub account: https://github.com/arinWald
 
-Joel Romero - Art, Audio:
+Joel Romero Botella - Art, Audio:
 - Gituhub account: https://github.com/Joeltecke25
 
-Oriol Martín - Gameplay Programmer, Q&A:
+Oriol Martín Corella - Gameplay Programmer, Q&A:
 - Gituhub account: https://github.com/Urii98
 
-Iván Bermúdez - Art, Animations, Research/Documentation:
+Iván Bermúdez Sagra - Art, Animations, Research/Documentation:
 - Gituhub account: https://github.com/IvanBSupc
 
 ## Description of the game
