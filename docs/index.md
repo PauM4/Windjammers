@@ -38,7 +38,6 @@ A la espera de Gamepad.
 
 Besides the current responsibility, each team member has worked on the game's code.
 
-##   
 
 ### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original) !
 ### Check our [Github Repository](https://github.com/PauM4/Windjammers) !
