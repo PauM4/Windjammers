@@ -12,7 +12,7 @@ A la espera de trailer.
 ## Controls
 
 ```markdown
-**Gamepad:**
+Gamepad:
 
 Both Players:
 - DPAD for movement.
@@ -21,7 +21,7 @@ Both Players:
 - Spamming Y to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
 - Start to pass screens, select character and select stage.
 
-**Keyboard:**
+Keyboard:
 
 Player 1(Left):
 - WASD for movement.
@@ -37,7 +37,7 @@ Player 2 (Right):
 - Spamming I to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
 - Enter button to select character.
 
-**Debug functions:**
+Debug functions:
 - F1 activates god mode. This disables scoring and timing.
 - F2 activates the colliders.
 - F3 activates direct win for player 1.
