@@ -20,6 +20,7 @@ A la espera de Gamepad.
 ![nova](https://user-images.githubusercontent.com/99950250/171996710-a613288d-f117-46f6-b8c0-039c82c0236e.jpg)
 
 ## Team Members
+
 **Pau Argiz** - Management, Gameplay Programmer, Q&A:
 - [Gituhub account](https://github.com/PauM4)
 
@@ -34,6 +35,10 @@ A la espera de Gamepad.
 
 **Iván Bermúdez** - Art, Animations, Research/Documentation:
 - [Gituhub account](https://github.com/IvanBSupc)
+
+Besides the current responsibility, each team member has worked on the game's code.
+
+## 
 
 ### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original) !
 ### Check our [Github Repository](https://github.com/PauM4/Windjammers) !
