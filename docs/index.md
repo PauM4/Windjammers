@@ -21,19 +21,19 @@ A la espera de Gamepad.
 
 ## Team Members
 
-**Pau Argiz Gutiérrez** - Management, Gameplay Programmer, Q&A:
+**Pau Argiz Gutiérrez** - Management, Gameplay Programmer, Q&A
 - [Gituhub account](https://github.com/PauM4)
 
-**Arnau González Acosta** - UI, Audio Programmer, Game Designer:
+**Arnau González Acosta** - UI, Audio Programmer, Game Designer
 - [Gituhub account](https://github.com/arinWald)
 
-**Joel Romero Botella** - Art, Audio:
+**Joel Romero Botella** - Art, Audio
 - [Gituhub account](https://github.com/Joeltecke25)
 
-**Oriol Martín Corella** - Gameplay Programmer, Q&A:
+**Oriol Martín Corella** - Gameplay Programmer, Q&A
 - [Gituhub account](https://github.com/Urii98)
 
-**Iván Bermúdez Sagra** - Art, Animations, Research/Documentation:
+**Iván Bermúdez Sagra** - Art, Animations, Research/Documentation
 - [Gituhub account](https://github.com/IvanBSupc)
 
 Besides the current responsibility, each team member has worked on the game's code.
