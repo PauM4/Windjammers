@@ -20,19 +20,19 @@ A la espera de Gamepad.
 ![nova](https://user-images.githubusercontent.com/99950250/171996710-a613288d-f117-46f6-b8c0-039c82c0236e.jpg)
 
 ## Team Members
-Pau Argiz - Management:
+Pau Argiz - Management, Gameplay Programmer, Q&A:
 - [Gituhub account](https://github.com/PauM4)
 
-Arnau González - Q&A:
+Arnau González - UI, Audio Programmer, Game Designer:
 - [Gituhub account](https://github.com/arinWald)
 
-Joel Romero - Design:
+Joel Romero - Art, Audio:
 - [Gituhub account](https://github.com/Joeltecke25)
 
-Oriol Martín - Art:
+Oriol Martín - Gameplay Programmer, Q&A:
 - [Gituhub account](https://github.com/Urii98)
 
-Iván Bermúdez - Code:
+Iván Bermúdez - Art, Animations, Research/Documentation:
 - [Gituhub account](https://github.com/IvanBSupc)
 
 ### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original) !
