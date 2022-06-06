@@ -7,7 +7,7 @@ We’re going to replicate the 1994 Windjammers game developed and published by 
 Windjammers is a 1vs1 sport game arcade, where different styles of sports are mixed (frisbee, volleyball and handball).  Mainly, the sport that was based on this game was frisbee.  The player has the function of using his character to throw the frisbee towards the opposite field and make the frisbee  contact with the ground or pass out of the opposite side.
 
 ## Trailer
-<iframe width="740" height="590" src="https://www.youtube.com/watch?v=3yeyg30Bx5c" frameborder="0" allowfullscreen></iframe>
+<iframe width="740" height="590" src="https://youtu.be/3yeyg30Bx5c" frameborder="0" allowfullscreen></iframe>
 
 ## Controls
 
