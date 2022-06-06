@@ -16,25 +16,25 @@ Gamepad:
 
 Both Players:
 - DPAD for movement.
-- A to throw frisbee. Pressing DPAD you can launch diagonally up or down respectively.
-- B to throw a lob. Pressing DPAD you can launch diagonally up or down respectively.
+- A to throw frisbee. Pressing DPAD you can launch diagonally up or down respectively. Without the frisbee, do a dash movement.
+- B to throw a lob. Pressing DPAD you can launch diagonally up, down, closer or further respectively.
 - Spamming Y to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
-- Start to pass screens, select character and select stage.
+- Start to pass screens, select character and select stage (Player 2 only can select character). 
 
 Keyboard:
 
 Player 1(Left):
 - WASD for movement.
-- V to throw frisbee. Pressing W or S you can launch diagonally up or down respectively.
-- B to throw a lob. Pressing W or S you can launch diagonally up or down respectively.
-- Spamming N to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- V to throw frisbee. Pressing W or S you can launch diagonally up or down respectively. Without the frisbee, do a dash movement.
+- B to throw a lob. Pressing WASD you can launch diagonally up, down, closer or further respectively.
+- Spamming N to block the frisbee. After blocking it, pick up the frisbee and press N again to perform the super shot.
 - Space bar to pass screens, select character and select stage.
 
 Player 2 (Right):
 - Arrow keys for movement.
-- O to throw frisbee. Pressing arrow keys you can launch diagonally up or down respectively.
-- P to throw a lob. Pressing arrow keys you can launch diagonally up or down respectively.
-- Spamming I to block the frisbee. After blocking it, pick up the frisbee and press Y again to perform the super shot.
+- O to throw frisbee. Pressing arrow keys you can launch diagonally up or down respectively. Without the frisbee, do a dash movement.
+- P to throw a lob. Pressing arrow keys you can launch diagonally up, down, closer or further respectively.
+- Spamming I to block the frisbee. After blocking it, pick up the frisbee and press I again to perform the super shot.
 - Enter button to select character.
 
 Debug functions:
