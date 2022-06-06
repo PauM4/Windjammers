@@ -69,6 +69,6 @@ Debug functions:
 Besides the current responsibility, each team member has worked on the game's code.
 
 
-### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/Windjamers_original) !
+### Download the lastest version of our Windjammers [HERE](https://github.com/PauM4/Windjammers/releases/tag/%23life) !
 ### Check our [Github Repository](https://github.com/PauM4/Windjammers) !
 ### See more information in our Windjammers [Wiki](https://github.com/PauM4/Windjammers/wiki) !
