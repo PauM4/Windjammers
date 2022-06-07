@@ -30,7 +30,7 @@ bool ModuleRender::Init()
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
-
+	SDL_RenderSetLogicalSize(renderer, 304, 224);
 	if (renderer == nullptr)
 	{
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -83,7 +83,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 {
 	bool ret = true;
 
-	SDL_Rect dstRect{ x * SCREEN_SIZE+ 350, y * SCREEN_SIZE+90, 0, 0 };
+	SDL_Rect dstRect{ x * SCREEN_SIZE, y * SCREEN_SIZE, 0, 0 };
 
 	if (useCamera)
 	{
@@ -121,7 +121,7 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
-	SDL_Rect dstRect { rect.x * SCREEN_SIZE+ 350, rect.y * SCREEN_SIZE+90, rect.w * SCREEN_SIZE, rect.h * SCREEN_SIZE };
+	SDL_Rect dstRect{ rect.x * SCREEN_SIZE, rect.y * SCREEN_SIZE, rect.w * SCREEN_SIZE, rect.h * SCREEN_SIZE };
 
 	if (useCamera)
 	{
